@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2463eb">
+<title>SpeakFlow — Salma Edition</title>
+<style>
+:root{--blue:#2563eb;--blue2:#60a5fa;--ink:#142653;--muted:#64748b;--line:#dce8fb;--bg:#f5f9ff;--card:#fff;--soft:#eaf3ff;--green:#16a34a;--purple:#8b5cf6;--pink:#db61b6;--amber:#d99512;--shadow:0 10px 28px rgba(31,78,150,.07)}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#f7fbff,#eef5ff);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif}button,input,textarea,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:220px minmax(0,1fr);min-height:100vh}.sidebar{padding:22px 14px;border-right:1px solid var(--line);background:rgba(255,255,255,.8);display:flex;flex-direction:column;gap:24px}.brand{display:flex;gap:10px;align-items:center;padding:0 6px}.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(145deg,#76b7ff,#1455e8);display:grid;place-items:center;color:white;font-size:24px;font-weight:800;box-shadow:0 6px 15px #2563eb33}.brand strong{font-size:20px;letter-spacing:-.5px}.brand small{display:block;color:var(--muted);font-size:10px;margin-top:2px}.nav{display:grid;gap:6px}.nav button{border:0;background:transparent;text-align:left;padding:12px 11px;border-radius:11px;color:#34517f;font-weight:650;font-size:13px;display:flex;align-items:center;gap:10px}.nav button.active,.nav button:hover{background:#e1edff;color:var(--blue)}.nav .ico{width:20px;text-align:center;font-size:17px}.sidebar-note{margin-top:auto;background:#edf5ff;border:1px solid #dcecff;padding:14px;border-radius:14px;font-size:12px;color:#34517f;line-height:1.65}.main{padding:22px clamp(14px,2.5vw,34px) 28px;max-width:1600px;width:100%;margin:auto}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:20px}.hello{display:flex;align-items:center;gap:12px}.sun{font-size:27px}.hello h2{margin:0;font-size:19px}.hello p{margin:4px 0 0;color:var(--muted);font-size:12px}.top-actions{display:flex;gap:8px;align-items:center}.lang-toggle{display:flex;background:#e5efff;padding:4px;border-radius:22px}.lang-toggle button{border:0;background:transparent;padding:7px 13px;border-radius:18px;color:#47618b;font-size:12px;font-weight:800}.lang-toggle button.active{background:var(--blue);color:white}.hero{background:linear-gradient(110deg,#e2f0ff,#cfe5ff 60%,#e6f3ff);border:1px solid #d3e7ff;border-radius:20px;padding:clamp(22px,3vw,38px);display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:205px;overflow:hidden}.hero h1{font-size:clamp(25px,3vw,36px);letter-spacing:-1px;margin:0 0 10px}.hero p{max-width:560px;line-height:1.65;color:#355789;margin:0 0 18px}.hero-art{font-size:90px;min-width:150px;text-align:center;filter:drop-shadow(0 10px 10px #2463eb20)}.btn{border:0;border-radius:25px;padding:11px 18px;background:linear-gradient(120deg,#327bff,#1752db);color:white;font-weight:750;box-shadow:0 5px 12px #2563eb20}.btn.secondary{background:#edf4ff;color:var(--blue);box-shadow:none;border:1px solid var(--line)}.btn.ghost{background:transparent;color:var(--blue);box-shadow:none;border:1px solid var(--line)}.btn.small{padding:8px 13px;font-size:12px}.modules{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:18px 0}.module{border:1px solid transparent;border-radius:15px;padding:17px 15px;min-height:145px;text-align:left;transition:.15s}.module:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.module .big{font-size:25px;display:block;margin-bottom:12px}.module strong{font-size:13px;display:block;margin-bottom:7px}.module small{font-size:11px;line-height:1.5;display:block;color:#4e6487}.m-blue{background:#e2f0ff;border-color:#d9eaff}.m-purple{background:#f0eaff;border-color:#e7dcff}.m-green{background:#e4f9e9;border-color:#d7f3dd}.m-pink{background:#ffedf8;border-color:#f9e0f1}.m-amber{background:#fff5df;border-color:#f7ebcb}.content-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.panel{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:18px;box-shadow:var(--shadow);min-width:0}.panel-head{display:flex;align-items:center;gap:10px;margin-bottom:15px}.panel-icon{width:38px;height:38px;border-radius:13px;background:#eaf2ff;display:grid;place-items:center;font-size:19px}.panel h3{margin:0;font-size:15px}.sub{font-size:11px;color:var(--muted);margin-top:4px}.tag{margin-left:auto;border-radius:20px;background:#eaf2ff;color:#2457bc;padding:6px 10px;font-size:10px;font-weight:800}.prompt-box{background:#f4f9ff;border:1px solid #dfecff;border-radius:13px;padding:20px 16px;text-align:center;min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}.prompt-box .topic-label{font-size:10px;color:var(--blue);font-weight:800;background:#e1edff;border-radius:20px;padding:6px 10px}.prompt-box h4{margin:0;font-size:17px;line-height:1.6}.prompt-box p{margin:0;color:#49658e;font-size:13px;line-height:1.6}.controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:15px}.controls .spacer{flex:1}.timer{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}.mini-toggle{display:flex;gap:4px;padding:4px;background:#f0f6ff;border-radius:24px}.mini-toggle button{border:0;border-radius:20px;padding:7px 11px;background:transparent;color:#54709d;font-size:11px;font-weight:800}.mini-toggle button.active{background:var(--blue);color:white}.framework{display:grid;grid-template-columns:1.2fr .8fr;gap:12px}.steps{background:#f6faff;border:1px solid #e2eeff;border-radius:13px;padding:14px}.step{display:flex;gap:10px;align-items:flex-start;margin:8px 0 13px}.step:last-child{margin-bottom:0}.num{width:27px;height:27px;border-radius:50%;display:grid;place-items:center;font-weight:850;flex-shrink:0;background:#d7f7f4;color:#0f8c89}.step:nth-child(3) .num{background:#e1f7dc;color:#268a32}.step:nth-child(4) .num{background:#ffe8d9;color:#c85b1d}.step:nth-child(5) .num{background:#f0dfff;color:#9045bf}.step b{font-size:11px;display:block;margin:2px 0 3px}.step small{font-size:10px;color:var(--muted);line-height:1.45}.example{background:#f6faff;border:1px solid #e2eeff;border-radius:13px;padding:14px}.example h4{font-size:12px;margin:0 0 10px}.example p{font-size:10px;color:var(--muted);line-height:1.5;margin:0 0 8px}.example ol{padding-left:17px;margin:0;font-size:10px;line-height:1.9}.wide{grid-column:1/-1}.bottom-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;margin-top:14px}.scenario-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.scenario{border:1px solid #e0ebff;background:#f8fbff;border-radius:12px;padding:13px 8px;text-align:center;color:#294b85}.scenario.active{border-color:#3980ff;background:#edf5ff;box-shadow:0 0 0 1px #3980ff22}.scenario span{display:block;font-size:21px;margin-bottom:8px}.scenario b{font-size:10px;display:block;margin-bottom:5px}.scenario small{font-size:9px;color:var(--muted);line-height:1.4;display:block}.scenario-output{background:#f4f8ff;border:1px solid #e0ebff;border-radius:12px;padding:15px;margin-top:12px;line-height:1.6}.scenario-output b{font-size:12px}.scenario-output p{font-size:13px;margin:7px 0;color:#37537e}.record-panel{text-align:center}.wave{font-size:34px;letter-spacing:2px;color:#8bb8ff;margin:8px}.mic{width:57px;height:57px;border:0;border-radius:50%;background:var(--blue);color:#fff;font-size:23px;box-shadow:0 0 0 9px #eaf2ff}.mic.recording{background:#dc3545;animation:pulse 1.3s infinite}@keyframes pulse{50%{box-shadow:0 0 0 15px #fee2e2}}.record-time{font-size:12px;color:var(--muted);margin:10px}.record-controls{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px}.feedback{margin-top:12px;text-align:left;background:#f7faff;border:1px solid #e4edfc;border-radius:12px;padding:12px;font-size:12px;line-height:1.55;color:#456087}.stats{display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:center}.ring{width:104px;height:104px;border-radius:50%;background:conic-gradient(var(--blue) var(--progress,0%),#e6efff 0);display:grid;place-items:center;position:relative}.ring:before{content:"";position:absolute;inset:9px;background:white;border-radius:50%}.ring div{position:relative;text-align:center}.ring strong{font-size:23px;display:block}.ring small{font-size:9px;color:var(--muted)}.stat-lines{display:grid;gap:11px}.stat-line{display:flex;justify-content:space-between;gap:10px;font-size:11px}.stat-line span{color:var(--muted)}.stat-line b{font-variant-numeric:tabular-nums}.progressbar{height:7px;background:#e9f1ff;border-radius:8px;overflow:hidden;margin-top:5px}.progressbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#60a5fa,#2563eb);border-radius:8px}.encourage{margin-top:14px;padding:11px;border-radius:11px;background:#eff6ff;color:#345786;font-size:11px;line-height:1.5}.view{display:none}.view.active{display:block}.practice-layout{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field-label{display:block;font-size:12px;font-weight:750;margin:12px 0 6px}.text-field,select,textarea{width:100%;border:1px solid #d8e5f8;border-radius:11px;background:#fbfdff;padding:11px;color:var(--ink);outline:none}.text-field:focus,textarea:focus,select:focus{border-color:#77a8ff;box-shadow:0 0 0 3px #dceaff}.textarea{min-height:100px;resize:vertical}.organizer-fields{display:grid;gap:10px}.field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.notice{font-size:11px;color:var(--muted);line-height:1.5;margin-top:10px}.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#17366e;color:white;padding:12px 18px;border-radius:24px;box-shadow:var(--shadow);font-size:12px;display:none;z-index:10}.history-item{border-bottom:1px solid #edf2fa;padding:11px 0;display:flex;justify-content:space-between;gap:10px;font-size:12px}.history-item:last-child{border-bottom:0}.footer{text-align:center;color:#7a91b5;font-size:11px;padding:20px 0 0}.rtl{direction:rtl}.rtl .nav button{text-align:right}.rtl .example ol{padding-right:17px;padding-left:0}.rtl .stat-line{direction:rtl}.rtl .controls{direction:rtl}.rtl .spacer{margin-left:auto}
+@media(max-width:1050px){.app{grid-template-columns:190px minmax(0,1fr)}.modules{grid-template-columns:repeat(3,1fr)}.content-grid,.bottom-grid{grid-template-columns:1fr}.wide{grid-column:auto}.hero-art{font-size:65px}.framework{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.app{display:block}.sidebar{padding:12px;position:sticky;top:0;z-index:5;border-right:0;border-bottom:1px solid var(--line);gap:10px}.brand{padding:0 3px}.brand strong{font-size:17px}.nav{display:flex;overflow-x:auto;gap:5px}.nav button{white-space:nowrap;padding:9px 10px;font-size:11px}.nav .ico{font-size:14px}.sidebar-note{display:none}.main{padding:15px 12px 24px}.topbar{align-items:flex-start}.hello h2{font-size:16px}.hello p{font-size:10px}.hero{padding:21px;min-height:0}.hero-art{display:none}.hero p{font-size:13px}.modules{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.module{min-height:130px;padding:13px}.module:last-child{grid-column:1/-1}.panel{padding:14px}.framework,.practice-layout{grid-template-columns:1fr}.scenario-grid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:90px 1fr}.ring{width:86px;height:86px}.field-row{grid-template-columns:1fr}.tag{display:none}}
+
+.m-teal{background:#e2fbf7;border-color:#d1f2ec}.m-coral{background:#fff0ec;border-color:#f9ddd5}
+.personal-mission{margin-top:14px}.mission-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.mission-grid>div{background:#f8fbff;border:1px solid #e4edfb;border-radius:13px;padding:14px}.mission-icon{font-size:22px;margin-bottom:8px}.mission-grid b{font-size:11px;display:block;margin-bottom:5px}.mission-grid small{font-size:10px;color:var(--muted);line-height:1.5;display:block}
+.reset-card{display:grid;gap:10px}.reset-step{background:#f7faff;border:1px solid #e2edfc;border-radius:12px;padding:12px}.reset-step b{font-size:12px}.reset-step p{margin:6px 0 0;color:#4a648a;font-size:11px;line-height:1.5}.exposure-list{display:grid;gap:8px}.exposure-list button{border:1px solid #e1eafb;background:#f8fbff;border-radius:11px;padding:11px;text-align:left;color:#294b85;font-size:11px;line-height:1.45}.exposure-list button.done{background:#e7f8eb;border-color:#ccebd4;text-decoration:line-through;opacity:.75}.rtl .exposure-list button{text-align:right}
+@media(max-width:1050px){.mission-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.mission-grid{grid-template-columns:1fr}.personal-mission{margin-top:10px}}
+
+.daily-progress{height:8px;background:#edf2f8;border-radius:99px;overflow:hidden;margin:0 0 16px}.daily-progress>div{height:100%;width:0;background:linear-gradient(90deg,#5b7cff,#6ec9b8);transition:.25s}
+.daily-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.daily-step{background:#f8fbff;border:1px solid #e1eafb;border-radius:14px;padding:14px;text-align:left;cursor:pointer}.daily-step span{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:9px;background:#e9efff;color:#4262c9;font-weight:800;font-size:10px;margin-bottom:8px}.daily-step b,.daily-step small{display:block}.daily-step b{font-size:12px}.daily-step small{font-size:10px;color:var(--muted);line-height:1.45;margin-top:5px}.daily-step.done{background:#eaf8ef;border-color:#cbe8d4}.daily-step.done span{background:#d9f0df;color:#2d8a4a}
+.framework{display:grid;grid-template-columns:34px 1fr;gap:7px 10px;align-items:center;margin:10px 0}.framework span{width:28px;height:28px;border-radius:8px;background:#eaf0ff;display:grid;place-items:center;font-size:9px;font-weight:800;color:#4764bd}.framework b{font-size:11px}.work-scenarios .scenario,.career-scenarios .scenario{min-height:92px}
+.metric-chips{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}.metric-chips span{background:#f5f8fd;border:1px solid #e2e9f5;border-radius:99px;padding:8px 10px;font-size:10px;color:#4c6285}
+.feeling-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:14px}.feeling{border:1px solid #e1e8f2;background:#fafcff;border-radius:12px;padding:12px 8px;font-size:11px;cursor:pointer}.feeling.active{border-color:#7b8ff0;background:#eef1ff}.quick-action{background:#fff8e7;border:1px solid #f1dfac;border-radius:12px;padding:12px;margin-bottom:14px;font-size:11px;line-height:1.5;color:#765c19}
+.weekly-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0 18px}.weekly-stats>div{background:#f8fbff;border:1px solid #e1e9f5;border-radius:12px;padding:14px}.weekly-stats span{display:block;font-size:24px;font-weight:800}.weekly-stats small{color:var(--muted);font-size:10px}.progress-actions{display:flex;justify-content:flex-end;margin-bottom:10px}.select{width:100%;padding:12px;border:1px solid #dfe7f2;border-radius:10px;background:white;font:inherit;font-size:11px}
+.m-purple{background:#f0edff;border-color:#ddd6ff}.m-blue{background:#eaf2ff;border-color:#d8e5ff}
+@media(max-width:850px){.daily-grid{grid-template-columns:1fr 1fr}.weekly-stats{grid-template-columns:1fr 1fr}.feeling-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.daily-grid{grid-template-columns:1fr}.weekly-stats{grid-template-columns:1fr 1fr}.feeling-grid{grid-template-columns:1fr 1fr}}
+
+.m-green{background:#eaf8ef;border-color:#d3ebda}
+.path-progress{height:9px;background:#edf2f7;border-radius:99px;overflow:hidden;margin:0 0 16px}.path-progress>div{height:100%;width:3.33%;background:linear-gradient(90deg,#5b7cff,#68c7a5);transition:.3s}
+.path-phases{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:16px}.phase{background:#f8fbff;border:1px solid #e2e9f3;border-radius:12px;padding:10px}.phase b{display:block;font-size:9px;color:#6b7fa2}.phase span{display:block;font-size:11px;font-weight:800;margin-top:3px}.phase small{display:block;font-size:9px;color:var(--muted);margin-top:3px}
+.path-card{border:1px solid #e0e7f1;border-radius:18px;padding:22px;background:linear-gradient(135deg,#fbfcff,#f6f9ff)}.path-day{font-size:10px;font-weight:900;letter-spacing:1.2px;color:#536bb7}.path-card h2{margin:7px 0 6px;font-size:23px}.path-card>p{font-size:12px;line-height:1.6;color:#52627a;max-width:800px}.path-three{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}.path-three>div{background:white;border:1px solid #e3e9f2;border-radius:12px;padding:13px}.path-three span{display:inline-grid;place-items:center;width:24px;height:24px;background:#edf1ff;color:#5268bd;border-radius:8px;font-size:10px;font-weight:900}.path-three b{display:block;font-size:11px;margin-top:7px}.path-three small{display:block;color:var(--muted);font-size:10px;line-height:1.5;margin-top:4px}.path-controls{display:flex;gap:8px;flex-wrap:wrap}.path-note{margin-top:12px;padding:12px 14px;border-radius:12px;background:#fff8e8;border:1px solid #f0dfb4;font-size:10px;line-height:1.5}.score-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:18px}.score-grid label{background:#f8fbff;border:1px solid #e1e8f2;border-radius:12px;padding:12px}.score-grid span{display:block;font-size:10px;font-weight:800;min-height:30px}.score-grid input{width:100%}.score-grid b{display:block;font-size:18px;margin-top:5px}.feedback{margin-top:12px;padding:10px 12px;border-radius:10px;background:#f6f8fc;font-size:10px;line-height:1.5;min-height:20px}
+@media(max-width:850px){.path-phases{grid-template-columns:repeat(3,1fr)}.path-three{grid-template-columns:1fr}.score-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.path-phases{grid-template-columns:1fr 1fr}.score-grid{grid-template-columns:1fr}}
+
+.m-purple{background:#f1edff;border-color:#ddd5fb}
+.flow-principle{display:flex;gap:8px;align-items:baseline;padding:12px 14px;border-radius:12px;background:#f5f2ff;border:1px solid #e2dcfb;font-size:11px;line-height:1.5}.flow-principle b{color:#6650b5}.flow-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}.flow-step{padding:11px;border:1px solid #e1e7f0;border-radius:12px;background:#fafcff}.flow-step.active{border-color:#b9a9ef;background:#f7f4ff}.flow-step span{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:7px;background:#eeeaff;color:#5e49aa;font-weight:900;font-size:10px}.flow-step b{display:block;font-size:10px;margin-top:6px}.flow-step small{display:block;color:var(--muted);font-size:9px;line-height:1.4;margin-top:3px}.flow-timer{display:flex;align-items:center;gap:10px;padding:12px 0}.flow-timer>div{min-width:85px}.flow-timer b{display:block;font-size:25px;letter-spacing:1px}.flow-timer small{font-size:9px;color:var(--muted)}.flow-board{display:grid;gap:13px}.flow-three{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.flow-script{padding:14px;border-radius:12px;background:#f7f9fc;border:1px dashed #cfd8e6;font-size:11px}.flow-script div{font-weight:700;margin-top:7px;line-height:1.7}.flow-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.transcript-box{margin-top:12px;padding:12px;border:1px solid #e1e7f0;border-radius:12px;background:#fafcff}.transcript-box>div{font-size:10px;line-height:1.6;max-height:130px;overflow:auto}.hidden{display:none}.flow-score{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.flow-score>div{padding:13px;border-radius:12px;background:#f8fbff;border:1px solid #e0e7f1}.flow-score span{font-size:9px;color:var(--muted);display:block}.flow-score b{font-size:20px;display:block;margin:5px 0}.flow-score small{font-size:9px;line-height:1.4;color:var(--muted)}.reset-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.reset-grid button{border:1px solid #e1e7ef;background:#fbfcfe;border-radius:10px;padding:10px;font-size:10px;cursor:pointer}.reset-result{margin-top:12px;padding:13px;border-radius:12px;background:#f7faf8;border:1px solid #dbeadf;min-height:26px;font-size:10px;line-height:1.6}
+@media(max-width:800px){.flow-steps{grid-template-columns:1fr 1fr}.flow-three,.flow-score{grid-template-columns:1fr}.reset-grid{grid-template-columns:1fr 1fr}}
+
+/* ===== Salma Recovery v5 additions ===== */
+.recovery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.recovery-card{background:var(--card,#fff);border:1px solid var(--border,#e5e7eb);border-radius:18px;padding:18px}
+.recovery-card h3{margin-top:0}
+.recovery-card p{line-height:1.7}
+.recovery-pill{display:inline-flex;padding:6px 10px;border-radius:999px;background:var(--soft,#f3f4f6);font-size:.85rem;margin:3px}
+.self-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.self-btn{width:100%;text-align:left;padding:14px;border:1px solid var(--border,#ddd);border-radius:14px;background:transparent;cursor:pointer}
+.self-btn:hover{transform:translateY(-1px)}
+.coach-output{margin-top:14px;padding:14px;border-radius:14px;background:var(--soft,#f6f7f9);line-height:1.8}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.ladder .step{padding:12px;border:1px solid var(--border,#ddd);border-radius:12px}
+@media(max-width:700px){.ladder{grid-template-columns:1fr 1fr}}
+.v5-note{border-left:4px solid currentColor;padding:10px 14px;margin:12px 0;border-radius:8px;background:var(--soft,#f7f7f7)}
+
+
+/* ===== v6: social perception, self-defense, overthinking ===== */
+.v6-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px}
+.v6-card{background:var(--card,#fff);border:1px solid var(--border,#e5e7eb);border-radius:18px;padding:18px}
+.v6-card h3{margin-top:0}
+.v6-card textarea,.v6-card input{width:100%;box-sizing:border-box;margin:7px 0;padding:11px;border:1px solid var(--border,#ddd);border-radius:10px}
+.v6-result{margin-top:12px;padding:13px;border-radius:12px;background:var(--soft,#f5f6f8);line-height:1.8}
+.v6-choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.v6-choice{padding:12px;border:1px solid var(--border,#ddd);border-radius:12px;background:transparent;text-align:left;cursor:pointer}
+.v6-choice:hover{transform:translateY(-1px)}
+.v6-script{font-weight:600}
+.v6-rule{display:flex;gap:10px;align-items:flex-start;margin:8px 0;line-height:1.7}
+.v6-num{min-width:27px;height:27px;border-radius:50%;display:grid;place-items:center;background:var(--soft,#f1f3f5)}
+
+.auth-wrap{position:fixed;inset:0;z-index:50;background:var(--bg);display:grid;place-items:center;padding:20px}
+.auth-wrap[hidden]{display:none}
+.auth-card{width:min(400px,100%);background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px 24px}
+.auth-card h2{margin:0 0 6px;font-size:24px}
+.auth-card p{margin:0 0 18px;color:var(--muted);font-size:14px}
+.auth-card input{width:100%;margin:0 0 10px;padding:13px 12px;font-size:16px}
+.auth-card .btn{width:100%;padding:14px;font-size:16px;margin-top:4px}
+.auth-msg{min-height:20px;margin:8px 0 0;font-size:13px;color:#b42335}
+.auth-msg.ok{color:#1f7a45}
+.auth-alt{display:flex;justify-content:space-between;gap:10px;margin-top:14px}
+.auth-alt button{background:none;border:0;color:var(--muted);font-size:13px;padding:4px 0;text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+<aside class="sidebar">
+  <div class="brand"><div class="logo">≋</div><div><strong>SpeakFlow</strong><small>Salma Edition · Speak · Lead · Grow</small></div></div>
+  <nav class="nav" id="nav">
+    <button class="active" data-view="home"><span class="ico">⌂</span><span data-i18n="home">Home</span></button>
+    <button data-view="daily"><span class="ico">▦</span><span data-i18n="daily">Daily Practice</span></button>
+    <button data-view="organize"><span class="ico">♧</span><span data-i18n="organize">Organize Thoughts</span></button>
+    <button data-view="pressure"><span class="ico">ϟ</span><span data-i18n="pressure">Speak Under Pressure</span></button>
+    <button data-view="voice"><span class="ico">♩</span><span data-i18n="voice">Voice Practice</span></button>
+    <button data-view="assertive"><span class="ico">🛡️</span><span data-i18n="assertive">Assertiveness</span></button>
+    <button data-view="mindset"><span class="ico">🌿</span><span data-i18n="mindset">Mind Reset</span></button>
+    <button data-view="progress"><span class="ico">▥</span><span data-i18n="progress">Progress</span></button>
+  </nav>
+  <div class="sidebar-note">🌱 <b data-i18n="smallsteps">Small steps, big progress</b><br><span data-i18n="yougotthis">You’ve got this ♡</span></div>
+</aside>
+<main class="main">
+  <div class="topbar">
+    <div class="hello"><div class="sun">☀️</div><div><h2 id="greeting">Good afternoon!</h2><p data-i18n="tagline">Clearer communication · Stronger boundaries · Bigger opportunities</p></div></div>
+    <div class="top-actions"><div class="lang-toggle"><button id="langAR">AR</button><button id="langEN" class="active">EN</button></div></div>
+  </div>
+  <section class="view active" id="view-home">
+    <div class="hero"><div><h1 data-i18n="heroTitle">Your voice. Your ideas. Your space.</h1><p data-i18n="heroText">This is your personal training room: practice speaking clearly, responding under pressure, disagreeing without shrinking, presenting your engineering ideas, and becoming more comfortable taking up space — in Arabic and English.</p><button class="btn" onclick="startDaily()" data-i18n="startPractice">▶ Start your practice</button></div><div class="hero-art">🗣️</div></div>
+    <div class="modules">
+      <button class="module m-purple" onclick="showView('flowlab')">
+      <span class="big">🧠</span><strong data-i18n="flowlab">Thought → Speech Lab</strong>
+      <small data-i18n="flowlabDesc">Train the exact gap between how fast you think and how fast you speak.</small>
+    </button>
+<button class="module m-green" onclick="showView('path30')"><span class="big">🗺</span><strong data-i18n="path30">30-Day Path</strong><small data-i18n="path30Desc">A progressive plan built around your communication, work, English and leadership goals.</small></button>
+<button class="module m-blue" onclick="showView('daily')"><span class="big">▦</span><strong data-i18n="daily">Daily Practice</strong><small data-i18n="dailyDesc">Random topics and real-life scenarios. Speak for 1–2 min.</small></button>
+      <button class="module m-purple" onclick="showView('organize')"><span class="big">💡</span><strong data-i18n="organize">Organize Your Thoughts</strong><small data-i18n="organizeDesc">Learn to structure your ideas with a simple framework.</small></button>
+      <button class="module m-green" onclick="showView('pressure')"><span class="big">ϟ</span><strong data-i18n="pressure">Speak Under Pressure</strong><small data-i18n="pressureDesc">Handle unexpected questions and tricky situations.</small></button>
+      <button class="module m-pink" onclick="showView('voice')"><span class="big">🎙️</span><strong data-i18n="voice">Voice Practice</strong><small data-i18n="voiceDesc">Record, listen and reflect on your speaking.</small></button>
+      <button class="module m-amber" onclick="showView('progress')"><span class="big">▥</span><strong data-i18n="progress">Track Your Progress</strong><small data-i18n="progressDesc">See your improvement and stay motivated.</small></button>
+
+      <button class="module m-teal" onclick="showView('assertive')"><span class="big">🛡️</span><strong data-i18n="assertive">Assertiveness Lab</strong><small data-i18n="assertiveDesc">Practice boundaries, disagreement, interruption and saying no without over-explaining.</small></button>
+      
+      <button class="module m-blue" onclick="showView('daily')"><span class="big">⏱</span><strong data-i18n="daily">Daily 20</strong><small data-i18n="dailyDesc">A focused 15–20 minute routine: reset, speak, practice, finish.</small></button>
+      <button class="module m-purple" onclick="showView('work')"><span class="big">💼</span><strong data-i18n="work">Work Scenarios</strong><small data-i18n="workDesc">Real situations: interruptions, “no”, scope creep, public criticism and raises.</small></button>
+      <button class="module m-amber" onclick="showView('career')"><span class="big">🚀</span><strong data-i18n="career">Career Track</strong><small data-i18n="careerDesc">Interview, S-MEP pitch, hardest project and selling your tool.</small></button>
+      <button class="module m-teal" onclick="showView('mindloop')"><span class="big">🧠</span><strong data-i18n="mindloop">Mind Loop</strong><small data-i18n="mindloopDesc">Turn a looping thought into facts, self-compassion and one next step.</small></button>
+<button class="module m-coral" onclick="showView('mindset')"><span class="big">🌿</span><strong data-i18n="mindset">Mind Reset</strong><small data-i18n="mindsetDesc">Short drills to stop rumination, recover after awkward moments and reset before action.</small></button>
+    </div>
+    <div class="content-grid">
+      <section class="panel">
+        <div class="panel-head"><div class="panel-icon">▦</div><div><h3 data-i18n="todayTopic">Daily speaking prompt</h3><div class="sub" data-i18n="topicSub">A little practice is better than none.</div></div><span class="tag">AR + EN</span></div>
+        <div class="prompt-box"><span class="topic-label" data-i18n="todaysTopic">TODAY'S TOPIC</span><h4 id="homePromptAR" dir="rtl">إيه مهارة نفسك تطوريها وليه؟</h4><p id="homePromptEN">What is one skill you want to improve, and why?</p></div>
+        <div class="controls"><div class="mini-toggle"><button class="active" id="promptAR" onclick="setPromptLang('ar')">AR</button><button id="promptEN" onclick="setPromptLang('en')">EN</button></div><span class="spacer"></span><button class="btn small" onclick="startDaily()" data-i18n="practiceNow">Practice now →</button><button class="btn ghost small" onclick="newPrompt()" data-i18n="anotherTopic">↻ Another topic</button></div>
+      </section>
+      <section class="panel">
+        <div class="panel-head"><div class="panel-icon">💡</div><div><h3 data-i18n="fourParts">The 4-part structure</h3><div class="sub" data-i18n="fourPartsSub">Turn a racing mind into a clear message.</div></div></div>
+        <div class="framework"><div class="steps">
+          <div class="step"><span class="num">1</span><div><b data-i18n="intro">Introduction</b><small data-i18n="introDesc">Say your main point first.</small></div></div>
+          <div class="step"><span class="num">2</span><div><b data-i18n="point1">Main point 1</b><small data-i18n="point1Desc">Explain your first idea.</small></div></div>
+          <div class="step"><span class="num">3</span><div><b data-i18n="point2">Main point 2</b><small data-i18n="point2Desc">Add a reason or example.</small></div></div>
+          <div class="step"><span class="num">4</span><div><b data-i18n="conclusion">Conclusion</b><small data-i18n="conclusionDesc">Wrap up in one sentence.</small></div></div>
+        </div><div class="example"><h4 data-i18n="example">Example</h4><p data-i18n="examplePrompt">Talk about a project you worked on.</p><ol><li data-i18n="ex1">What was it?</li><li data-i18n="ex2">What did you do?</li><li data-i18n="ex3">What was challenging?</li><li data-i18n="ex4">What did you learn?</li></ol><button class="btn small" onclick="showView('organize')" data-i18n="tryIt">Try it →</button></div></div>
+      </section>
+    </div>
+
+      <section class="panel wide personal-mission">
+        <div class="panel-head">
+          <div class="panel-icon">🎯</div>
+          <div><h3 data-i18n="missionTitle">Your personal mission</h3><div class="sub" data-i18n="missionSub">You are not training to become louder. You are training to become harder to stop.</div></div>
+          <span class="tag">SALMA MODE</span>
+        </div>
+        <div class="mission-grid">
+          <div><div class="mission-icon">🗣️</div><b data-i18n="mission1">Say the point first</b><small data-i18n="mission1d">Less explaining before the message. More clarity.</small></div>
+          <div><div class="mission-icon">🧱</div><b data-i18n="mission2">Hold your ground</b><small data-i18n="mission2d">Disagree, negotiate and set a boundary without apologizing for existing.</small></div>
+          <div><div class="mission-icon">⚙️</div><b data-i18n="mission3">Own your expertise</b><small data-i18n="mission3d">Explain technical ideas simply and present your work with authority.</small></div>
+          <div><div class="mission-icon">🌿</div><b data-i18n="mission4">Recover fast</b><small data-i18n="mission4d">An awkward moment is one event, not a verdict on you.</small></div>
+        </div>
+      </section>
+    <div class="bottom-grid">
+      <section class="panel"><div class="panel-head"><div class="panel-icon">ϟ</div><div><h3 data-i18n="quickScenario">Quick-response practice</h3><div class="sub" data-i18n="quickScenarioSub">Train yourself to pause, think, then answer.</div></div></div><div class="scenario-grid">
+        <button class="scenario active" data-scenario="unexpected" onclick="chooseScenario('unexpected')"><span>❔</span><b data-i18n="unexpected">Unexpected question</b><small data-i18n="unexpectedDesc">Answer on the spot.</small></button>
+        <button class="scenario" data-scenario="meeting" onclick="chooseScenario('meeting')"><span>👥</span><b data-i18n="meeting">Meeting scenario</b><small data-i18n="meetingDesc">Explain an idea clearly.</small></button>
+        <button class="scenario" data-scenario="technical" onclick="chooseScenario('technical')"><span>⚙️</span><b data-i18n="technical">Technical discussion</b><small data-i18n="technicalDesc">Explain a technical issue.</small></button>
+        <button class="scenario" data-scenario="social" onclick="chooseScenario('social')"><span>💬</span><b data-i18n="social">Personal / social</b><small data-i18n="socialDesc">Everyday conversation.</small></button>
+      </div><div class="scenario-output"><b id="scenarioTitle">Your challenge</b><p id="scenarioQuestion">Your manager asks: “Can you explain the main issue in 30 seconds?”</p><button class="btn small" onclick="showView('pressure')" data-i18n="startScenario">Start scenario →</button></div></section>
+      <section class="panel record-panel"><div class="panel-head" style="text-align:left"><div class="panel-icon">🎙️</div><div><h3 data-i18n="voicePractice">Voice practice</h3><div class="sub" data-i18n="recordListen">Record, listen, reflect.</div></div></div><div class="wave">〰 〰 〰</div><button class="mic" id="quickRecord" onclick="toggleRecord()" aria-label="Start recording">🎙</button><div class="record-time" id="recordTime">00:00</div><div class="record-controls"><button class="btn small" onclick="toggleRecord()" id="recordLabel" data-i18n="startRecording">Start recording</button><button class="btn secondary small" onclick="showView('voice')" data-i18n="reviewVoice">Review & reflect</button></div><div class="notice" data-i18n="recordNotice">Your recordings stay in this browser session unless you download them.</div></section>
+    </div>
+  </section>
+
+
+
+  <section class="view" id="view-flowlab">
+    <div class="panel wide">
+      <div class="panel-head">
+        <div class="panel-icon">🧠</div>
+        <div>
+          <h3 data-i18n="flowTitle">Thought → Speech Lab</h3>
+          <div class="sub" data-i18n="flowSub">Your goal is not to slow your mind down. It is to give your thoughts a traffic system.</div>
+        </div>
+        <span class="tag" id="flowRound">Round 1</span>
+      </div>
+
+      <div class="flow-principle">
+        <b data-i18n="flowRule">Your new speaking rule:</b>
+        <span data-i18n="flowRuleText">Think in blocks, speak in blocks. One point → one sentence → tiny pause.</span>
+      </div>
+
+      <div class="flow-steps">
+        <div class="flow-step active"><span>1</span><b data-i18n="flowStep1">Dump</b><small data-i18n="flowStep1d">Write the idea fast. No polishing.</small></div>
+        <div class="flow-step"><span>2</span><b data-i18n="flowStep2">Compress</b><small data-i18n="flowStep2d">Choose the 3 things that matter.</small></div>
+        <div class="flow-step"><span>3</span><b data-i18n="flowStep3">Speak</b><small data-i18n="flowStep3d">Say only one block at a time.</small></div>
+        <div class="flow-step"><span>4</span><b data-i18n="flowStep4">Review</b><small data-i18n="flowStep4d">Notice pace, jumps and repeats.</small></div>
+      </div>
+
+      <div class="field-row">
+        <div>
+          <label class="field-label" data-i18n="topicLabel">Today's topic / situation</label>
+          <input id="flowTopic" class="input" data-i18n-placeholder="topicPlaceholder" placeholder="Example: Explain a project problem to your manager">
+        </div>
+        <div>
+          <label class="field-label" data-i18n="modeLabel">Mode</label>
+          <select id="flowMode" class="input">
+            <option value="arabic" data-i18n="modeArabic">Arabic</option>
+            <option value="english" data-i18n="modeEnglish">English</option>
+            <option value="mixed" data-i18n="modeMixed">Arabic → English</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="flow-timer">
+        <div><b id="flowTimer">00:10</b><small data-i18n="planningTime">Planning window</small></div>
+        <button class="btn" onclick="startFlowTimer()" data-i18n="startPlan">Start 10-sec plan</button>
+        <button class="btn secondary" onclick="randomFlowPrompt()" data-i18n="randomPrompt">Give me a prompt</button>
+      </div>
+
+      <div class="flow-board">
+        <div>
+          <label class="field-label" data-i18n="dumpLabel">1) Brain dump — everything that wants to come out</label>
+          <textarea id="flowDump" class="textarea" rows="5" data-i18n-placeholder="dumpPlaceholder" placeholder="Write freely. Fragments are okay."></textarea>
+        </div>
+        <div class="flow-three">
+          <div><label class="field-label" data-i18n="point1">Point 1</label><input id="flowP1" class="input"></div>
+          <div><label class="field-label" data-i18n="point2">Point 2</label><input id="flowP2" class="input"></div>
+          <div><label class="field-label" data-i18n="point3">Point 3</label><input id="flowP3" class="input"></div>
+        </div>
+        <div class="flow-script">
+          <b data-i18n="speakFrame">Your speaking frame</b>
+          <div id="flowFrame">My main point is… → First… → Second… → So my recommendation is…</div>
+        </div>
+      </div>
+
+      <div class="flow-actions">
+        <button class="btn" onclick="startFlowRecord()" data-i18n="record60">Record 60 sec</button>
+        <button class="btn secondary" onclick="stopFlowRecord()" data-i18n="stopRecord">Stop</button>
+        <button class="btn secondary" onclick="scoreFlow()" data-i18n="scoreMySpeech">Score my speech</button>
+      </div>
+
+      <div id="flowTranscriptBox" class="transcript-box hidden">
+        <label class="field-label" data-i18n="transcriptLabel">Live transcript (if your browser supports it)</label>
+        <div id="flowTranscript"></div>
+      </div>
+
+      <div class="flow-score">
+        <div><span data-i18n="pace">Pace</span><b id="flowPace">—</b><small data-i18n="paceHint">Aim for deliberate pauses, not slow speech.</small></div>
+        <div><span data-i18n="jumps">Idea jumps</span><b id="flowJumps">—</b><small data-i18n="jumpsHint">Count how often you switch tracks mid-sentence.</small></div>
+        <div><span data-i18n="clarity">Clarity</span><b id="flowClarity">—</b><small data-i18n="clarityHint">Did the listener know your point early?</small></div>
+      </div>
+      <div id="flowCoach" class="feedback"></div>
+    </div>
+
+    <div class="panel wide">
+      <div class="panel-head">
+        <div class="panel-icon">🌿</div>
+        <div><h3 data-i18n="resetTitle">Fast Reset — stop the replay</h3><div class="sub" data-i18n="resetSub">For the moments when one conversation keeps looping in your head.</div></div>
+      </div>
+      <div class="reset-grid">
+        <button onclick="quickReset('tension')" data-i18n="resetTension">Tension</button>
+        <button onclick="quickReset('anger')" data-i18n="resetAnger">Anger</button>
+        <button onclick="quickReset('shame')" data-i18n="resetShame">Embarrassment</button>
+        <button onclick="quickReset('anxiety')" data-i18n="resetAnxiety">Anxiety</button>
+        <button onclick="quickReset('excitement')" data-i18n="resetExcitement">Excitement</button>
+      </div>
+      <div id="resetResult" class="reset-result"></div>
+    </div>
+  </section>
+
+  <section class="view" id="view-path30">
+    <div class="panel wide">
+      <div class="panel-head">
+        <div class="panel-icon">🗺</div>
+        <div><h3 data-i18n="pathTitle">Your 30-Day Communication Upgrade</h3>
+        <div class="sub" data-i18n="pathSub">Not “be more confident.” Train the exact behaviors that make confidence visible.</div></div>
+        <span class="tag" id="pathDayTag">Day 1 / 30</span>
+      </div>
+      <div class="path-progress"><div id="pathProgressBar"></div></div>
+      <div class="path-phases">
+        <div class="phase"><b>01</b><span data-i18n="phase1">Clarity</span><small data-i18n="phase1d">Days 1–5</small></div>
+        <div class="phase"><b>02</b><span data-i18n="phase2">Presence</span><small data-i18n="phase2d">Days 6–10</small></div>
+        <div class="phase"><b>03</b><span data-i18n="phase3">Assertiveness</span><small data-i18n="phase3d">Days 11–15</small></div>
+        <div class="phase"><b>04</b><span data-i18n="phase4">Work impact</span><small data-i18n="phase4d">Days 16–20</small></div>
+        <div class="phase"><b>05</b><span data-i18n="phase5">English + leadership</span><small data-i18n="phase5d">Days 21–30</small></div>
+      </div>
+      <div class="path-card">
+        <div class="path-day" id="pathDayNumber">DAY 1</div>
+        <h2 id="pathDayTitle"></h2>
+        <p id="pathDayMission"></p>
+        <div class="path-three">
+          <div><span>1</span><b data-i18n="warmup">Warm-up</b><small id="pathWarmup"></small></div>
+          <div><span>2</span><b data-i18n="drill">Speaking drill</b><small id="pathDrill"></small></div>
+          <div><span>3</span><b data-i18n="exposure">Real-world exposure</b><small id="pathExposure"></small></div>
+        </div>
+        <div class="path-controls">
+          <button class="btn secondary" onclick="previousPathDay()" data-i18n="previous">← Previous</button>
+          <button class="btn" onclick="completePathDay()" data-i18n="completeDay">Complete today</button>
+          <button class="btn secondary" onclick="nextPathDay()" data-i18n="next">Next →</button>
+        </div>
+        <div id="pathCoach" class="feedback"></div>
+      </div>
+      <div class="path-note">
+        <b data-i18n="antiFreezeTitle">If you freeze:</b>
+        <span data-i18n="antiFreezeText">Pause → breathe once → say the point in one sentence → ask one question. You are allowed to buy time without disappearing.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="view-daily">
+    <div class="panel"><div class="panel-head"><div class="panel-icon">▦</div><div><h3 data-i18n="dailyTitle">Daily speaking practice</h3><div class="sub" data-i18n="dailyLong">Speak for 60–120 seconds. Don't aim for perfect; aim for clear.</div></div></div>
+      <div class="field-row"><div><label class="field-label" data-i18n="practiceLanguage">Practice language</label><select id="dailyLanguage"><option value="ar">العربية</option><option value="en">English</option></select></div><div><label class="field-label" data-i18n="duration">Target duration</label><select id="duration"><option value="60">1 minute</option><option value="90">90 seconds</option><option value="120" selected>2 minutes</option></select></div></div>
+      <div class="prompt-box" style="margin-top:12px"><span class="topic-label" data-i18n="yourPrompt">YOUR PROMPT</span><h4 id="dailyPrompt" dir="rtl">إيه مهارة نفسك تطوريها وليه؟</h4><p id="dailyPromptTranslation">What is one skill you want to improve, and why?</p></div>
+      <div class="controls"><button class="btn" onclick="startTimer()" data-i18n="startTimer">Start speaking timer</button><button class="btn secondary" onclick="newPrompt()" data-i18n="changePrompt">New prompt</button><span class="spacer"></span><span class="timer" id="dailyTimer">02:00</span></div>
+      <label class="field-label" data-i18n="reflection">After speaking, reflect (optional)</label><textarea id="dailyReflection" class="textarea" placeholder="What went well? Where did you rush, pause, or lose your point?"></textarea>
+      <div class="controls"><button class="btn" onclick="saveSession()" data-i18n="saveSession">Save practice</button></div>
+    </div>
+  </section>
+
+  <section class="view" id="view-organize">
+    <div class="practice-layout">
+      <section class="panel"><div class="panel-head"><div class="panel-icon">💡</div><div><h3 data-i18n="organizerTitle">Organize your thoughts</h3><div class="sub" data-i18n="organizerSub">Don't say everything at once. Pick the main message first.</div></div></div>
+        <label class="field-label" data-i18n="topicLabel">What do you want to explain?</label><input id="organizeTopic" class="text-field" placeholder="e.g. A design issue, a new idea, a personal opinion">
+        <div class="organizer-fields">
+          <div><label class="field-label" data-i18n="mainMessage">1. Main message — what is your point?</label><textarea id="orgIntro" class="textarea" rows="2" placeholder="The one thing I want them to understand is..."></textarea></div>
+          <div class="field-row"><div><label class="field-label" data-i18n="reasonOne">2. First reason / point</label><textarea id="orgP1" class="textarea" rows="3" placeholder="My first point is..."></textarea></div><div><label class="field-label" data-i18n="reasonTwo">3. Example / second point</label><textarea id="orgP2" class="textarea" rows="3" placeholder="For example..."></textarea></div></div>
+          <div><label class="field-label" data-i18n="wrapUp">4. Wrap-up — finish in one sentence</label><textarea id="orgEnd" class="textarea" rows="2" placeholder="So, the main takeaway is..."></textarea></div>
+        </div>
+        <div class="controls"><button class="btn" onclick="buildOutline()" data-i18n="buildOutline">Build my outline</button><button class="btn secondary" onclick="clearOutline()" data-i18n="clear">Clear</button></div>
+      </section>
+      <section class="panel"><div class="panel-head"><div class="panel-icon">🧭</div><div><h3 data-i18n="yourOutline">Your speaking map</h3><div class="sub" data-i18n="outlineSub">Use these notes as signposts, not a script to memorize.</div></div></div><div id="outlineResult" class="feedback" style="min-height:220px">Your outline will appear here. Keep each point short enough to remember while speaking.</div>
+        <div class="notice" data-i18n="tipPause">Tip: Take one quiet breath before you start. A pause feels longer to you than it sounds to others.</div>
+        <div class="controls"><button class="btn small" onclick="copyOutline()" data-i18n="copyOutline">Copy outline</button><button class="btn secondary small" onclick="showView('voice')" data-i18n="practiceAloud">Practice aloud →</button></div>
+      </section>
+    </div>
+  </section>
+
+  <section class="view" id="view-pressure">
+    <div class="panel"><div class="panel-head"><div class="panel-icon">ϟ</div><div><h3 data-i18n="pressureTitle">Speak under pressure</h3><div class="sub" data-i18n="pressureLong">Use a simple reset: pause → headline → reason → check if more detail is needed.</div></div></div>
+      <div class="scenario-grid">
+        <button class="scenario active" data-scenario="unexpected" onclick="chooseScenario('unexpected')"><span>❔</span><b data-i18n="unexpected">Unexpected question</b><small data-i18n="unexpectedDesc">Answer on the spot.</small></button>
+        <button class="scenario" data-scenario="meeting" onclick="chooseScenario('meeting')"><span>👥</span><b data-i18n="meeting">Meeting scenario</b><small data-i18n="meetingDesc">Explain an idea clearly.</small></button>
+        <button class="scenario" data-scenario="technical" onclick="chooseScenario('technical')"><span>⚙️</span><b data-i18n="technical">Technical discussion</b><small data-i18n="technicalDesc">Explain a technical issue.</small></button>
+        <button class="scenario" data-scenario="social" onclick="chooseScenario('social')"><span>💬</span><b data-i18n="social">Personal / social</b><small data-i18n="socialDesc">Everyday conversation.</small></button>
+      </div>
+      <div class="scenario-output" style="margin-top:18px"><span class="topic-label" data-i18n="yourChallenge">YOUR CHALLENGE</span><h3 id="pressureTitle" style="margin:10px 0">Unexpected question</h3><p id="pressureQuestion">Someone asks you to explain your opinion without warning.</p><div class="controls"><button class="btn" onclick="pressureTimer()" data-i18n="thinkThenSpeak">Think for 5 seconds, then speak</button><span class="timer" id="pressureTimer">Ready when you are</span></div></div>
+      <div class="practice-layout" style="margin-top:14px"><div><label class="field-label" data-i18n="yourAnswer">Your answer (optional notes)</label><textarea id="pressureAnswer" class="textarea" rows="5" placeholder="Try: “My main point is… The reason is… For example…”"></textarea></div><div><label class="field-label" data-i18n="selfCheck">Quick self-check</label><div class="feedback"><label><input type="checkbox" class="selfcheck"> I paused before answering.</label><br><label><input type="checkbox" class="selfcheck"> I stated my main point first.</label><br><label><input type="checkbox" class="selfcheck"> I gave one reason or example.</label><br><label><input type="checkbox" class="selfcheck"> I stopped when my point was clear.</label></div><div class="controls"><button class="btn" onclick="savePressure()" data-i18n="saveAttempt">Save attempt</button></div></div></div>
+    </div>
+  </section>
+
+  <section class="view" id="view-voice">
+    <div class="practice-layout">
+      <section class="panel record-panel"><div class="panel-head" style="text-align:left"><div class="panel-icon">🎙️</div><div><h3 data-i18n="voiceStudio">Voice studio</h3><div class="sub" data-i18n="voiceStudioSub">Record a short answer, then listen without judging yourself.</div></div></div><div class="wave">〰〰〰〰〰</div><button class="mic" id="mainRecord" onclick="toggleRecord()">🎙</button><div class="record-time" id="mainRecordTime">00:00</div><div class="record-controls"><button class="btn" id="mainRecordLabel" onclick="toggleRecord()" data-i18n="startRecording">Start recording</button><button class="btn secondary" onclick="stopRecording()" data-i18n="stopRecording">Stop</button></div><audio id="audioPlayback" controls style="display:none;width:100%;margin-top:15px"></audio><div class="notice" data-i18n="recordNotice">Recordings stay in this browser session unless you download them.</div></section>
+      <section class="panel"><div class="panel-head"><div class="panel-icon">🔎</div><div><h3 data-i18n="reviewTitle">Review with kindness</h3><div class="sub" data-i18n="reviewSub">Pick one thing to improve next time — not ten.</div></div></div>
+        <label class="field-label" data-i18n="reviewQuestion1">Did I pause instead of rushing?</label><select id="reviewPause"><option value="">Choose…</option><option>Yes</option><option>Sometimes</option><option>Not yet</option></select>
+        <label class="field-label" data-i18n="reviewQuestion2">Was my main point clear?</label><select id="reviewClear"><option value="">Choose…</option><option>Yes</option><option>Somewhat</option><option>Not yet</option></select>
+        <label class="field-label" data-i18n="reviewQuestion3">What will I focus on next time?</label><select id="reviewFocus"><option value="">Choose…</option><option>Slower pace</option><option>Clear structure</option><option>Fewer filler words</option><option>Clearer pronunciation</option><option>More confidence</option></select>
+        <label class="field-label" data-i18n="reviewNotes">One thing I did well</label><textarea id="reviewNotes" class="textarea" rows="3" placeholder="Even a small win counts."></textarea>
+        <div class="controls"><button class="btn" onclick="saveReview()" data-i18n="saveReview">Save reflection</button></div>
+        <div class="notice" data-i18n="privacyNote">This page does not send your audio anywhere. Browser recording support varies by device.</div>
+      </section>
+    </div>
+  </section>
+
+
+  <section class="view" id="view-assertive">
+    <div class="practice-layout">
+      <section class="panel">
+        <div class="panel-head"><div class="panel-icon">🛡️</div><div><h3 data-i18n="assertiveTitle">Assertiveness lab</h3><div class="sub" data-i18n="assertiveSub">The goal is not to sound aggressive. The goal is to stop abandoning your point.</div></div></div>
+        <div class="scenario-grid">
+          <button class="scenario active" data-assert="boundary" onclick="chooseAssertive('boundary')"><span>🧱</span><b data-i18n="boundary">Set a boundary</b><small data-i18n="boundaryD">Say no without a long apology.</small></button>
+          <button class="scenario" data-assert="interrupt" onclick="chooseAssertive('interrupt')"><span>✋</span><b data-i18n="interrupt">Handle interruption</b><small data-i18n="interruptD">Take your turn back calmly.</small></button>
+          <button class="scenario" data-assert="disagree" onclick="chooseAssertive('disagree')"><span>⚖️</span><b data-i18n="disagree">Disagree well</b><small data-i18n="disagreeD">Challenge an idea, not a person.</small></button>
+          <button class="scenario" data-assert="negotiate" onclick="chooseAssertive('negotiate')"><span>🤝</span><b data-i18n="negotiate">Ask for what you need</b><small data-i18n="negotiateD">Make a clear request.</small></button>
+        </div>
+        <div class="scenario-output" style="margin-top:16px">
+          <span class="topic-label" data-i18n="challenge">YOUR CHALLENGE</span>
+          <h3 id="assertiveTitle" style="margin:10px 0">Boundary</h3>
+          <p id="assertiveQuestion">A colleague keeps adding "small" tasks when your priorities are already full. Respond clearly.</p>
+        </div>
+        <label class="field-label" data-i18n="assertiveAnswer">Write your first response</label>
+        <textarea id="assertiveAnswer" class="textarea" rows="5" placeholder="Try: “I can’t take this on today. I can do it Thursday, or we can decide which priority moves.”"></textarea>
+        <div class="controls"><button class="btn" onclick="coachAssertive()" data-i18n="coachMe">Coach my response</button><button class="btn secondary" onclick="showView('voice')" data-i18n="sayIt">Now say it aloud →</button></div>
+        <div id="assertiveFeedback" class="feedback" style="min-height:90px" data-i18n="coachPlaceholder">Your coaching will appear here.</div>
+      </section>
+      <section class="panel">
+        <div class="panel-head"><div class="panel-icon">🧠</div><div><h3 data-i18n="antiFreeze">Anti-freeze protocol</h3><div class="sub" data-i18n="antiFreezeSub">When your mind goes blank, you don't need the perfect answer.</div></div></div>
+        <div class="steps">
+          <div class="step"><span class="num">1</span><div><b data-i18n="freeze1">Buy 3 seconds</b><small data-i18n="freeze1d">“Let me think about that for a second.”</small></div></div>
+          <div class="step"><span class="num">2</span><div><b data-i18n="freeze2">Headline</b><small data-i18n="freeze2d">Give your current best answer in one sentence.</small></div></div>
+          <div class="step"><span class="num">3</span><div><b data-i18n="freeze3">Support</b><small data-i18n="freeze3d">Add one reason, example or next step.</small></div></div>
+          <div class="step"><span class="num">4</span><div><b data-i18n="freeze4">Stop</b><small data-i18n="freeze4d">Don't keep talking just because silence feels uncomfortable.</small></div></div>
+        </div>
+        <div class="encourage" data-i18n="assertiveReminder">Remember: confidence is often a behavior you perform before it becomes a feeling.</div>
+      </section>
+    </div>
+  </section>
+
+  <section class="view" id="view-mindset">
+    <div class="content-grid">
+      <section class="panel">
+        <div class="panel-head"><div class="panel-icon">🌿</div><div><h3 data-i18n="mindResetTitle">90-second mind reset</h3><div class="sub" data-i18n="mindResetSub">For overthinking, embarrassment, tension or the urge to avoid.</div></div></div>
+        <div class="reset-card">
+          <div class="reset-step"><b>01 · <span data-i18n="reset1">Name it</span></b><p id="resetPrompt" data-i18n="reset1d">“I feel activated. That does not mean something is wrong.”</p></div>
+          <div class="reset-step"><b>02 · <span data-i18n="reset2">Separate facts from story</span></b><p data-i18n="reset2d">Fact: what actually happened? Story: what am I predicting people think about me?</p></div>
+          <div class="reset-step"><b>03 · <span data-i18n="reset3">Choose the next tiny action</span></b><p data-i18n="reset3d">Send the message. Ask the question. Speak again. Move your body. Continue.</p></div>
+        </div>
+        <div class="controls"><button class="btn" onclick="mindReset()" data-i18n="startReset">Start 90-second reset</button><span class="timer" id="mindTimer">Ready</span></div>
+      </section>
+      <section class="panel">
+        <div class="panel-head"><div class="panel-icon">🔥</div><div><h3 data-i18n="exposureTitle">Do it before you feel ready</h3><div class="sub" data-i18n="exposureSub">One small uncomfortable action per day.</div></div></div>
+        <div class="exposure-list">
+          <button onclick="completeExposure(this)" data-i18n="exp1">Ask one follow-up question instead of staying quiet.</button>
+          <button onclick="completeExposure(this)" data-i18n="exp2">State your preference without saying “whatever you want.”</button>
+          <button onclick="completeExposure(this)" data-i18n="exp3">Give your opinion in one sentence before explaining it.</button>
+          <button onclick="completeExposure(this)" data-i18n="exp4">Say “I need time to think” instead of answering from pressure.</button>
+          <button onclick="completeExposure(this)" data-i18n="exp5">Speak once in a meeting even if your voice feels shaky.</button>
+          <button onclick="completeExposure(this)" data-i18n="exp6">Let an awkward moment end without replaying it for 30 minutes.</button>
+        </div>
+        <div id="exposureWin" class="encourage" data-i18n="exposureWin">Pick one. The goal is reps, not bravery points.</div>
+      </section>
+      <section class="panel wide">
+        <div class="panel-head"><div class="panel-icon">📝</div><div><h3 data-i18n="debriefTitle">Fast debrief — not self-criticism</h3><div class="sub" data-i18n="debriefSub">Use this after a difficult interaction.</div></div></div>
+        <div class="field-row">
+          <div><label class="field-label" data-i18n="factLabel">What happened?</label><textarea id="mindFact" class="textarea" rows="3" placeholder="Only observable facts."></textarea></div>
+          <div><label class="field-label" data-i18n="storyLabel">What did your mind say it meant?</label><textarea id="mindStory" class="textarea" rows="3" placeholder="Be honest, not harsh."></textarea></div>
+        </div>
+        <div class="field-row">
+          <div><label class="field-label" data-i18n="winLabel">What did you do well?</label><textarea id="mindWin" class="textarea" rows="3" placeholder="One thing is enough."></textarea></div>
+          <div><label class="field-label" data-i18n="nextLabel">What will you do next time?</label><textarea id="mindNext" class="textarea" rows="3" placeholder="One behavior, not a personality judgment."></textarea></div>
+        </div>
+        <div class="controls"><button class="btn" onclick="saveMindDebrief()" data-i18n="saveDebrief">Save debrief</button></div>
+      </section>
+    </div>
+  </section>
+
+
+  <section class="view" id="view-daily">
+    <div class="panel wide daily-shell">
+      <div class="panel-head">
+        <div class="panel-icon">⏱</div>
+        <div><h3 data-i18n="dailyTitle">Your 15–20 minute daily training</h3>
+        <div class="sub" data-i18n="dailySub">Short enough to repeat. Real enough to change how you show up.</div></div>
+        <span class="tag" id="dailyStatus">0 / 6</span>
+      </div>
+      <div class="daily-progress"><div id="dailyProgressBar"></div></div>
+      <div class="daily-grid">
+        <button class="daily-step" data-daily="breath" onclick="completeDaily('breath',this)"><span>01</span><b data-i18n="dailyBreath">Reset + breathe</b><small data-i18n="dailyBreathD">60–90 sec: slow down before you perform.</small></button>
+        <button class="daily-step" data-daily="state" onclick="completeDaily('state',this)"><span>02</span><b data-i18n="dailyState">Rate your state</b><small data-i18n="dailyStateD">Name your energy, tension and confidence without judging them.</small></button>
+        <button class="daily-step" data-daily="summary" onclick="completeDaily('summary',this)"><span>03</span><b data-i18n="dailySummary">One-minute summary</b><small data-i18n="dailySummaryD">Explain one idea clearly: point → reason → next step.</small></button>
+        <button class="daily-step" data-daily="work" onclick="completeDaily('work',this)"><span>04</span><b data-i18n="dailyWork">Work scenario</b><small data-i18n="dailyWorkD">Do one real workplace response out loud.</small></button>
+        <button class="daily-step" data-daily="career" onclick="completeDaily('career',this)"><span>05</span><b data-i18n="dailyCareer">Career rep</b><small data-i18n="dailyCareerD">Practice your professional story in Arabic or English.</small></button>
+        <button class="daily-step" data-daily="win" onclick="completeDaily('win',this)"><span>06</span><b data-i18n="dailyWin">Today’s win</b><small data-i18n="dailyWinD">Write one thing you did despite discomfort.</small></button>
+      </div>
+      <div class="daily-note">
+        <label class="field-label" data-i18n="dailyNoteLabel">Today’s state / win</label>
+        <textarea id="dailyNote" class="textarea" rows="3" placeholder="What are you noticing today? What did you do anyway?"></textarea>
+        <button class="btn" onclick="saveDailyNote()" data-i18n="saveDaily">Save today</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="view-work">
+    <div class="practice-layout">
+      <section class="panel">
+        <div class="panel-head"><div class="panel-icon">🧱</div><div><h3 data-i18n="workTitle">Work scenarios: boundaries & assertiveness</h3><div class="sub" data-i18n="workSub">Use the same structure every time: acknowledge → clear position → alternative.</div></div></div>
+        <div class="scenario-grid work-scenarios">
+          <button class="scenario active" data-work="interrupt" onclick="chooseWork('interrupt')"><span>✋</span><b data-i18n="wInterrupt">Interrupted in a meeting</b></button>
+          <button class="scenario" data-work="noManager" onclick="chooseWork('noManager')"><span>🚫</span><b data-i18n="wNoManager">Say “no” to your manager</b></button>
+          <button class="scenario" data-work="scope" onclick="chooseWork('scope')"><span>📋</span><b data-i18n="wScope">Client asks beyond scope</b></button>
+          <button class="scenario" data-work="criticism" onclick="chooseWork('criticism')"><span>🎯</span><b data-i18n="wCriticism">Public criticism</b></button>
+          <button class="scenario" data-work="raise" onclick="chooseWork('raise')"><span>💰</span><b data-i18n="wRaise">Ask for recognition / raise</b></button>
+        </div>
+        <div class="scenario-output">
+          <span class="topic-label" data-i18n="framework">FRAMEWORK</span>
+          <div class="framework"><span>01</span><b data-i18n="ack">Acknowledge the situation</b><span>02</span><b data-i18n="position">State your position clearly</b><span>03</span><b data-i18n="alternative">Offer an alternative</b></div>
+          <h3 id="workScenarioTitle"></h3>
+          <p id="workScenarioPrompt"></p>
+        </div>
+        <div class="language-toggle" style="margin:14px 0"><button id="workAr" class="lang-btn active" onclick="setWorkLang('ar')">العربية</button><button id="workEn" class="lang-btn" onclick="setWorkLang('en')">English</button></div>
+        <label class="field-label" data-i18n="yourResponse">Your response</label>
+        <textarea id="workAnswer" class="textarea" rows="6" placeholder="Acknowledge → position → alternative"></textarea>
+        <div class="controls"><button class="btn" onclick="coachWork()" data-i18n="coachWork">Coach my answer</button><button class="btn secondary" onclick="showView('voice')" data-i18n="practiceAloud">Practice aloud →</button></div>
+        <div id="workFeedback" class="feedback" style="min-height:100px"></div>
+      </section>
+      <section class="panel">
+        <div class="panel-head"><div class="panel-icon">🎯</div><div><h3 data-i18n="workRules">Your rules under pressure</h3><div class="sub" data-i18n="workRulesSub">Simple behaviors that make you harder to derail.</div></div></div>
+        <div class="steps">
+          <div class="step"><span class="num">1</span><div><b data-i18n="rule1">Don't defend your worth</b><small data-i18n="rule1d">Solve the situation. You do not need to prove you deserve a seat at the table.</small></div></div>
+          <div class="step"><span class="num">2</span><div><b data-i18n="rule2">One reason is enough</b><small data-i18n="rule2d">Over-explaining can turn a clear boundary into a negotiation you didn't ask for.</small></div></div>
+          <div class="step"><span class="num">3</span><div><b data-i18n="rule3">Alternative, not apology</b><small data-i18n="rule3d">“I can do X by Thursday” is stronger than a long apology for not doing Y today.</small></div></div>
+          <div class="step"><span class="num">4</span><div><b data-i18n="rule4">Pause after the ask</b><small data-i18n="rule4d">Let the other person respond. Silence is not failure.</small></div></div>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <section class="view" id="view-career">
+    <div class="practice-layout">
+      <section class="panel">
+        <div class="panel-head"><div class="panel-icon">🚀</div><div><h3 data-i18n="careerTitle">Career track</h3><div class="sub" data-i18n="careerSub">Build a professional story that sounds like you, not like a memorized script.</div></div></div>
+        <div class="scenario-grid career-scenarios">
+          <button class="scenario active" data-career="intro" onclick="chooseCareer('intro')"><span>👋</span><b data-i18n="cIntro">Introduce yourself</b></button>
+          <button class="scenario" data-career="smep" onclick="chooseCareer('smep')"><span>⚙️</span><b data-i18n="cSmep">Explain S-MEP to a project manager</b></button>
+          <button class="scenario" data-career="hardest" onclick="chooseCareer('hardest')"><span>🏗️</span><b data-i18n="cHardest">Your hardest project</b></button>
+          <button class="scenario" data-career="sell" onclick="chooseCareer('sell')"><span>📈</span><b data-i18n="cSell">Sell your tool to another company</b></button>
+        </div>
+        <div class="scenario-output">
+          <span class="topic-label" data-i18n="storyFramework">STORY FRAMEWORK</span>
+          <div class="framework career-framework"><span>01</span><b data-i18n="problem">Problem</b><span>02</span><b data-i18n="solution">Solution</b><span>03</span><b data-i18n="result">Result in numbers</b></div>
+          <h3 id="careerScenarioTitle"></h3><p id="careerScenarioPrompt"></p>
+        </div>
+        <div class="language-toggle" style="margin:14px 0"><button id="careerAr" class="lang-btn active" onclick="setCareerLang('ar')">العربية</button><button id="careerEn" class="lang-btn" onclick="setCareerLang('en')">English</button></div>
+        <textarea id="careerAnswer" class="textarea" rows="7" placeholder="Problem → solution → measurable result"></textarea>
+        <div class="controls"><button class="btn" onclick="coachCareer()" data-i18n="coachCareer">Coach my story</button><button class="btn secondary" onclick="showView('voice')" data-i18n="recordIt">Now record it →</button></div>
+        <div id="careerFeedback" class="feedback" style="min-height:100px"></div>
+      </section>
+      <section class="panel">
+        <div class="panel-head"><div class="panel-icon">📊</div><div><h3 data-i18n="numbersTitle">Make your impact measurable</h3><div class="sub" data-i18n="numbersSub">If you don't have exact numbers, use a defensible estimate or scope.</div></div></div>
+        <div class="metric-chips">
+          <span>⏱ Time saved</span><span>💰 Cost reduced</span><span>📉 Errors reduced</span><span>⚡ Faster delivery</span><span>👥 Users / teams</span><span>📦 Projects handled</span>
+        </div>
+        <div class="encourage" data-i18n="careerReminder">Your story becomes stronger when the listener can picture the before, the change and the result.</div>
+      </section>
+    </div>
+  </section>
+
+  <section class="view" id="view-mindloop">
+    <div class="content-grid">
+      <section class="panel wide">
+        <div class="panel-head"><div class="panel-icon">🧠</div><div><h3 data-i18n="mindLoopTitle">When a thought keeps looping</h3><div class="sub" data-i18n="mindLoopSub">Name the feeling → take a fast action → write the truth → answer yourself like a friend → choose one next step.</div></div></div>
+        <div class="feeling-grid">
+          <button class="feeling active" data-feel="anxiety" onclick="chooseFeeling('anxiety',this)">😰 <span data-i18n="feelAnxiety">توتّر</span></button>
+          <button class="feeling" data-feel="anger" onclick="chooseFeeling('anger',this)">😤 <span data-i18n="feelAnger">غضب</span></button>
+          <button class="feeling" data-feel="shame" onclick="chooseFeeling('shame',this)">😳 <span data-i18n="feelShame">خجل</span></button>
+          <button class="feeling" data-feel="worry" onclick="chooseFeeling('worry',this)">😟 <span data-i18n="feelWorry">قلق</span></button>
+          <button class="feeling" data-feel="energy" onclick="chooseFeeling('energy',this)">🔥 <span data-i18n="feelEnergy">حماس</span></button>
+        </div>
+        <div class="quick-action" id="quickAction"></div>
+        <div class="field-row">
+          <div><label class="field-label" data-i18n="truthLabel">What is actually true?</label><textarea id="truthText" class="textarea" rows="4" placeholder="Observable facts, not predictions."></textarea></div>
+          <div><label class="field-label" data-i18n="selfTalkLabel">What did you say to yourself?</label><textarea id="selfTalk" class="textarea" rows="4" placeholder="Write the harsh / worried version honestly."></textarea></div>
+        </div>
+        <div class="field-row">
+          <div><label class="field-label" data-i18n="friendLabel">What would you tell your friend?</label><textarea id="friendTalk" class="textarea" rows="4" placeholder="Same situation. Different person. What would you say?"></textarea></div>
+          <div><label class="field-label" data-i18n="nextSmallLabel">One small next step</label><textarea id="nextSmall" class="textarea" rows="4" placeholder="Something you can do in 5–15 minutes."></textarea></div>
+        </div>
+        <div class="controls"><button class="btn" onclick="saveMindLoop()" data-i18n="saveMindLoop">Save this reset</button></div>
+        <div id="mindLoopFeedback" class="feedback" style="min-height:70px"></div>
+      </section>
+    </div>
+  </section>
+
+  <section class="view" id="view-weekly">
+    <div class="content-grid">
+      <section class="panel wide">
+        <div class="panel-head"><div class="panel-icon">📅</div><div><h3 data-i18n="weeklyTitle">Weekly review</h3><div class="sub" data-i18n="weeklySub">Look at reps, not perfection.</div></div></div>
+        <div class="weekly-stats">
+          <div><span id="weekWork">0</span><small data-i18n="weekWork">Work scenario reps</small></div>
+          <div><span id="weekCareer">0</span><small data-i18n="weekCareer">Career reps</small></div>
+          <div><span id="weekMind">0</span><small data-i18n="weekMind">Mind resets</small></div>
+          <div><span id="weekDaily">0</span><small data-i18n="weekDaily">Daily routines</small></div>
+        </div>
+        <div class="field-row">
+          <div><label class="field-label" data-i18n="lowestSkill">Lowest-practiced skill this week</label>
+            <select id="focusSkill" class="select"><option value="work">Work assertiveness</option><option value="career">Career communication</option><option value="english">English speaking</option><option value="mind">Mind reset</option><option value="voice">Voice / delivery</option></select>
+          </div>
+          <div><label class="field-label" data-i18n="nextWeek">Next week focus</label><textarea id="weekFocus" class="textarea" rows="2" placeholder="One behavior you want to repeat."></textarea></div>
+        </div>
+        <div class="controls"><button class="btn" onclick="saveWeeklyReview()" data-i18n="saveWeekly">Save weekly focus</button></div>
+        <div id="weeklyFeedback" class="feedback" style="min-height:60px"></div>
+      </section>
+    </div>
+  </section>
+
+
+  <section class="view" id="view-assessment">
+    <div class="panel wide">
+      <div class="panel-head">
+        <div class="panel-icon">📈</div>
+        <div><h3 data-i18n="assessmentTitle">Communication scorecard</h3><div class="sub" data-i18n="assessmentSub">Score behavior, not personality. Re-test every 7 days.</div></div>
+      </div>
+      <div class="score-grid">
+        <label><span data-i18n="scoreClarity">Clarity</span><input id="scoreClarity" type="range" min="1" max="10" value="5"><b id="scoreClarityVal">5</b></label>
+        <label><span data-i18n="scoreAssertive">Assertiveness</span><input id="scoreAssertive" type="range" min="1" max="10" value="5"><b id="scoreAssertiveVal">5</b></label>
+        <label><span data-i18n="scoreDelivery">Delivery</span><input id="scoreDelivery" type="range" min="1" max="10" value="5"><b id="scoreDeliveryVal">5</b></label>
+        <label><span data-i18n="scoreEnglish">Professional English</span><input id="scoreEnglish" type="range" min="1" max="10" value="5"><b id="scoreEnglishVal">5</b></label>
+        <label><span data-i18n="scoreRecovery">Recovery after awkward moments</span><input id="scoreRecovery" type="range" min="1" max="10" value="5"><b id="scoreRecoveryVal">5</b></label>
+      </div>
+      <div class="field-row">
+        <div><label class="field-label" data-i18n="assessmentWin">What improved?</label><textarea id="assessmentWin" class="textarea" rows="3"></textarea></div>
+        <div><label class="field-label" data-i18n="assessmentBlock">What still blocks you?</label><textarea id="assessmentBlock" class="textarea" rows="3"></textarea></div>
+      </div>
+      <button class="btn" onclick="saveAssessment()" data-i18n="saveAssessment">Save scorecard</button>
+      <div id="assessmentFeedback" class="feedback"></div>
+    </div>
+  </section>
+
+  <section class="view" id="view-progress">
+    <div class="progress-actions"><button class="btn secondary" onclick="showView('weekly')" data-i18n="weeklyReviewBtn">📅 Weekly review</button></div>
+    <div class="content-grid">
+      <section class="panel"><div class="panel-head"><div class="panel-icon">▥</div><div><h3 data-i18n="yourProgress">Your progress</h3><div class="sub" data-i18n="progressSub">Progress means showing up, not being perfect.</div></div></div><div class="stats"><div class="ring" id="progressRing" style="--progress:0%"><div><strong id="progressPercent">0%</strong><small data-i18n="sessionsGoal">practice goal</small></div></div><div class="stat-lines"><div class="stat-line"><span data-i18n="sessions">Practice sessions</span><b id="sessionCount">0</b></div><div class="stat-line"><span data-i18n="minutes">Practice minutes</span><b id="minuteCount">0</b></div><div class="stat-line"><span data-i18n="streak">Current streak</span><b id="streakCount">0 days</b></div><div class="stat-line"><span data-i18n="goal">Weekly goal</span><b>5 sessions</b></div></div></div><div style="margin-top:20px"><div class="stat-line"><span data-i18n="weeklyProgress">Weekly practice goal</span><b id="weeklyText">0 / 5</b></div><div class="progressbar"><i id="weeklyBar"></i></div></div><div class="encourage" id="encourageText">🌱 Every time you practice, you are building a skill.</div></section>
+      <section class="panel"><div class="panel-head"><div class="panel-icon">📓</div><div><h3 data-i18n="recentSessions">Recent practice</h3><div class="sub" data-i18n="historySub">Your saved practice log on this device.</div></div></div><div id="historyList"></div><div class="controls"><button class="btn secondary small" onclick="exportData()" data-i18n="exportData">Export my data</button><button class="btn ghost small" onclick="resetData()" data-i18n="resetData">Reset progress</button></div></section>
+    </div>
+  </section>
+  <div class="footer" data-i18n="footer">Small steps. Clear thoughts. A stronger voice. ♡</div>
+</main>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+const dict={
+en:{home:"Home",daily:"Daily Practice",organize:"Organize Your Thoughts",pressure:"Speak Under Pressure",voice:"Voice Practice",progress:"Progress",smallsteps:"Small steps, big progress",yougotthis:"You’ve got this ♡",tagline:"Better communication · More confidence · Bigger opportunities",heroTitle:"Your voice matters.",heroText:"Train your mind to slow down, organize your thoughts, find the right words and speak with confidence — in Arabic and English.",startPractice:"▶ Start your practice",dailyDesc:"Random topics and real-life scenarios. Speak for 1–2 min.",organizeDesc:"Learn to structure your ideas with a simple framework.",pressureDesc:"Handle unexpected questions and tricky situations.",voiceDesc:"Record, listen and reflect on your speaking.",progressDesc:"See your improvement and stay motivated.",todayTopic:"Daily speaking prompt",topicSub:"A little practice is better than none.",todaysTopic:"TODAY'S TOPIC",practiceNow:"Practice now →",anotherTopic:"↻ Another topic",fourParts:"The 4-part structure",fourPartsSub:"Turn a racing mind into a clear message.",intro:"Introduction",introDesc:"Say your main point first.",point1:"Main point 1",point1Desc:"Explain your first idea.",point2:"Main point 2",point2Desc:"Add a reason or example.",conclusion:"Conclusion",conclusionDesc:"Wrap up in one sentence.",example:"Example",examplePrompt:"Talk about a project you worked on.",ex1:"What was it?",ex2:"What did you do?",ex3:"What was challenging?",ex4:"What did you learn?",tryIt:"Try it →",quickScenario:"Quick-response practice",quickScenarioSub:"Train yourself to pause, think, then answer.",unexpected:"Unexpected question",unexpectedDesc:"Answer on the spot.",meeting:"Meeting scenario",meetingDesc:"Explain an idea clearly.",technical:"Technical discussion",technicalDesc:"Explain a technical issue.",social:"Personal / social",socialDesc:"Everyday conversation.",startScenario:"Start scenario →",voicePractice:"Voice practice",recordListen:"Record, listen, reflect.",startRecording:"Start recording",reviewVoice:"Review & reflect",recordNotice:"Your recordings stay in this browser session unless you download them.",dailyTitle:"Daily speaking practice",dailyLong:"Speak for 60–120 seconds. Don't aim for perfect; aim for clear.",practiceLanguage:"Practice language",duration:"Target duration",yourPrompt:"YOUR PROMPT",startTimer:"Start speaking timer",changePrompt:"New prompt",reflection:"After speaking, reflect (optional)",saveSession:"Save practice",organizerTitle:"Organize your thoughts",organizerSub:"Don't say everything at once. Pick the main message first.",topicLabel:"What do you want to explain?",mainMessage:"1. Main message — what is your point?",reasonOne:"2. First reason / point",reasonTwo:"3. Example / second point",wrapUp:"4. Wrap-up — finish in one sentence",buildOutline:"Build my outline",clear:"Clear",yourOutline:"Your speaking map",outlineSub:"Use these notes as signposts, not a script to memorize.",tipPause:"Tip: Take one quiet breath before you start. A pause feels longer to you than it sounds to others.",copyOutline:"Copy outline",practiceAloud:"Practice aloud →",pressureTitle:"Speak under pressure",pressureLong:"Use a simple reset: pause → headline → reason → check if more detail is needed.",yourChallenge:"YOUR CHALLENGE",thinkThenSpeak:"Think for 5 seconds, then speak",yourAnswer:"Your answer (optional notes)",selfCheck:"Quick self-check",saveAttempt:"Save attempt",voiceStudio:"Voice studio",voiceStudioSub:"Record a short answer, then listen without judging yourself.",stopRecording:"Stop",reviewTitle:"Review with kindness",reviewSub:"Pick one thing to improve next time — not ten.",reviewQuestion1:"Did I pause instead of rushing?",reviewQuestion2:"Was my main point clear?",reviewQuestion3:"What will I focus on next time?",reviewNotes:"One thing I did well",saveReview:"Save reflection",privacyNote:"This page does not send your audio anywhere. Browser recording support varies by device.",yourProgress:"Your progress",progressSub:"Progress means showing up, not being perfect.",sessionsGoal:"practice goal",sessions:"Practice sessions",minutes:"Practice minutes",streak:"Current streak",goal:"Weekly goal",weeklyProgress:"Weekly practice goal",recentSessions:"Recent practice",historySub:"Your saved practice log on this device.",exportData:"Export my data",resetData:"Reset progress",footer:"Small steps. Clear thoughts. A stronger voice. ♡",topicLabel2:"What do you want to explain?",examplePrompt2:"Talk about a project you worked on.",yourPrompt2:"YOUR PROMPT",flowlab:"Thought → Speech Lab",flowlabDesc:"Train the exact gap between how fast you think and how fast you speak.",flowTitle:"Thought → Speech Lab",flowSub:"Your goal is not to slow your mind down. It is to give your thoughts a traffic system.",flowRule:"Your new speaking rule:",flowRuleText:"Think in blocks, speak in blocks. One point → one sentence → tiny pause.",flowStep1:"Dump",flowStep1d:"Write the idea fast. No polishing.",flowStep2:"Compress",flowStep2d:"Choose the 3 things that matter.",flowStep3:"Speak",flowStep3d:"Say only one block at a time.",flowStep4:"Review",flowStep4d:"Notice pace, jumps and repeats.",topicPlaceholder:"Example: Explain a project problem to your manager",modeLabel:"Mode",modeArabic:"Arabic",modeEnglish:"English",modeMixed:"Arabic → English",planningTime:"Planning window",startPlan:"Start 10-sec plan",randomPrompt:"Give me a prompt",dumpLabel:"1) Brain dump — everything that wants to come out",dumpPlaceholder:"Write freely. Fragments are okay.",point3:"Point 3",speakFrame:"Your speaking frame",record60:"Record 60 sec",stopRecord:"Stop",scoreMySpeech:"Score my speech",transcriptLabel:"Live transcript (if your browser supports it)",pace:"Pace",paceHint:"Aim for deliberate pauses, not slow speech.",jumps:"Idea jumps",jumpsHint:"Count how often you switch tracks mid-sentence.",clarity:"Clarity",clarityHint:"Did the listener know your point early?",resetTitle:"Fast Reset — stop the replay",resetSub:"For the moments when one conversation keeps looping in your head.",resetTension:"Tension",resetAnger:"Anger",resetShame:"Embarrassment",resetAnxiety:"Anxiety",resetExcitement:"Excitement"},
+ar:{home:"الرئيسية",daily:"تدريب يومي",organize:"ترتيب الأفكار",pressure:"الكلام تحت الضغط",voice:"تدريب الصوت",progress:"تقدمي",smallsteps:"خطوات صغيرة وتقدم كبير",yougotthis:"إنتِ تقدري ♡",tagline:"تواصل أفضل · ثقة أكبر · فرص أوسع",heroTitle:"صوتك مهم.",heroText:"درّبي نفسك على تهدئة سرعة الأفكار وترتيبها واختيار الكلمات المناسبة والتعبير بثقة بالعربي والإنجليزي.",startPractice:"▶ ابدئي التدريب",dailyDesc:"موضوعات ومواقف واقعية للتحدث من دقيقة لدقيقتين.",organizeDesc:"اتعلمي ترتبي أفكارك بطريقة بسيطة.",pressureDesc:"تعاملي مع الأسئلة المفاجئة والمواقف الصعبة.",voiceDesc:"سجلي صوتك واسمعيه وراجعي أداءك.",progressDesc:"تابعي تطورك وحافظي على حماسك.",todayTopic:"موضوع الكلام اليومي",topicSub:"التدريب البسيط أفضل من عدم التدريب.",todaysTopic:"موضوع النهارده",practiceNow:"ابدئي التدريب ←",anotherTopic:"↻ موضوع تاني",fourParts:"ترتيب الكلام في ٤ أجزاء",fourPartsSub:"حوّلي سرعة الأفكار لكلام واضح.",intro:"المقدمة",introDesc:"قولي فكرتك الأساسية الأول.",point1:"النقطة الأولى",point1Desc:"اشرحي أول فكرة.",point2:"النقطة الثانية",point2Desc:"ضيفي سبب أو مثال.",conclusion:"الخلاصة",conclusionDesc:"أنهي كلامك في جملة واحدة.",example:"مثال",examplePrompt:"اتكلمي عن مشروع اشتغلتي عليه.",ex1:"كان إيه المشروع؟",ex2:"كان دورك إيه؟",ex3:"إيه التحدي؟",ex4:"اتعلمتي إيه؟",tryIt:"جربي ←",quickScenario:"تدريب الرد السريع",quickScenarioSub:"اتعودي توقفي لحظة وتفكري وبعدين تردي.",unexpected:"سؤال مفاجئ",unexpectedDesc:"ردي في نفس اللحظة.",meeting:"اجتماع شغل",meetingDesc:"اشرحي فكرتك بوضوح.",technical:"نقاش فني",technicalDesc:"اشرحي مشكلة فنية.",social:"موقف اجتماعي",socialDesc:"محادثة يومية.",startScenario:"ابدئي الموقف ←",voicePractice:"تدريب الصوت",recordListen:"سجلي واسمعي وراجعي.",startRecording:"ابدئي التسجيل",reviewVoice:"راجعي أداءك",recordNotice:"التسجيل بيكون داخل المتصفح، وممكن تحمليه لو حبيتي.",dailyTitle:"التدريب اليومي على الكلام",dailyLong:"اتكلمي من ٦٠ لـ١٢٠ ثانية. مش مطلوب الكمال، المطلوب الوضوح.",practiceLanguage:"لغة التدريب",duration:"مدة التدريب",yourPrompt:"موضوع التدريب",startTimer:"ابدئي مؤقت الكلام",changePrompt:"موضوع جديد",reflection:"بعد الكلام راجعي أداءك (اختياري)",saveSession:"احفظي التدريب",organizerTitle:"رتبي أفكارك",organizerSub:"مش لازم تقولي كل حاجة مرة واحدة. ابدئي بالفكرة الأساسية.",topicLabel:"عايزة تشرحي إيه؟",mainMessage:"١. الفكرة الأساسية — عايزة توصلي إيه؟",reasonOne:"٢. السبب أو النقطة الأولى",reasonTwo:"٣. مثال أو نقطة تانية",wrapUp:"٤. الخلاصة — أنهي الكلام في جملة",buildOutline:"رتبي الكلام",clear:"مسح",yourOutline:"خريطة كلامك",outlineSub:"استخدمي النقط كدليل، مش كنص تحفظيه.",tipPause:"نصيحة: خدي نفس هادي قبل ما تبدأي. الوقفة بتبان أطول ليكي من اللي بيسمعك.",copyOutline:"انسخي الترتيب",practiceAloud:"اتدربي بصوت عالي ←",pressureTitle:"الكلام تحت الضغط",pressureLong:"استخدمي ترتيب بسيط: وقفة ← الفكرة الأساسية ← السبب ← هل محتاجة تفاصيل أكتر؟",yourChallenge:"التحدي بتاعك",thinkThenSpeak:"فكري ٥ ثواني وبعدين اتكلمي",yourAnswer:"ردك (ملاحظات اختيارية)",selfCheck:"راجعي نفسك بسرعة",saveAttempt:"احفظي المحاولة",voiceStudio:"استوديو الصوت",voiceStudioSub:"سجلي إجابة قصيرة واسمعيها من غير ما تحكمي على نفسك.",stopRecording:"إيقاف",reviewTitle:"راجعي نفسك بلطف",reviewSub:"اختاري حاجة واحدة تحسنيها المرة الجاية، مش عشرة.",reviewQuestion1:"وقفت لحظة بدل ما أستعجل؟",reviewQuestion2:"الفكرة الأساسية كانت واضحة؟",reviewQuestion3:"هركز على إيه المرة الجاية؟",reviewNotes:"حاجة واحدة عملتها كويس",saveReview:"احفظي المراجعة",privacyNote:"الصفحة مش بتبعت صوتك لأي مكان. دعم التسجيل بيختلف حسب الجهاز والمتصفح.",yourProgress:"تقدمك",progressSub:"التقدم إنك تستمري، مش إنك تكوني مثالية.",sessionsGoal:"من الهدف",sessions:"عدد التدريبات",minutes:"دقائق التدريب",streak:"الاستمرار الحالي",goal:"الهدف الأسبوعي",weeklyProgress:"هدف التدريب الأسبوعي",recentSessions:"التدريبات الأخيرة",historySub:"سجل التدريبات المحفوظ على الجهاز ده.",exportData:"تصدير بياناتي",resetData:"تصفير التقدم",footer:"خطوات صغيرة. أفكار واضحة. صوت أقوى. ♡"}};
+const topics=[
+{ar:"إيه مهارة نفسك تطوريها وليه؟",en:"What is one skill you want to improve, and why?",flowlab:"معمل الفكرة → الكلام",flowlabDesc:"تدريب مباشر على الفجوة بين سرعة تفكيرك وسرعة كلامك.",flowTitle:"معمل الفكرة → الكلام",flowSub:"مش هدفنا نبطّأ دماغك؛ هدفنا ندي أفكارك نظام مرور.",flowRule:"قاعدة الكلام الجديدة:",flowRuleText:"فكري في blocks، واتكلمي في blocks. نقطة واحدة → جملة واحدة → pause صغيرة.",flowStep1:"تفريغ",flowStep1d:"اكتبي الفكرة بسرعة من غير تلميع.",flowStep2:"ضغط",flowStep2d:"اختاري أهم 3 نقاط.",flowStep3:"كلام",flowStep3d:"قولي block واحد في كل مرة.",flowStep4:"مراجعة",flowStep4d:"لاحظي السرعة والتنقل والتكرار.",topicPlaceholder:"مثال: اشرحي مشكلة في مشروعك لمديرك",modeLabel:"اللغة",modeArabic:"عربي",modeEnglish:"إنجليزي",modeMixed:"عربي → إنجليزي",planningTime:"وقت الترتيب",startPlan:"ابدئي ترتيب 10 ثواني",randomPrompt:"اديني موقف",dumpLabel:"1) تفريغ سريع — كل اللي عايز يطلع",dumpPlaceholder:"اكتبي بحرية. حتى لو كلمات متقطعة.",point3:"النقطة 3",speakFrame:"قالب الكلام",record60:"سجلي 60 ثانية",stopRecord:"إيقاف",scoreMySpeech:"قيّمي كلامي",transcriptLabel:"تفريغ مباشر لو المتصفح بيدعمه",pace:"السرعة",paceHint:"الهدف pauses مقصودة، مش كلام بطيء.",jumps:"قفزات الأفكار",jumpsHint:"عدّي كام مرة غيرتي المسار وإنتِ في نفس الجملة.",clarity:"الوضوح",clarityHint:"هل المستمع عرف نقطتك بدري؟",resetTitle:"Reset سريع — وقفي إعادة الموقف",resetSub:"لما موقف واحد يفضل شغال في دماغك.",resetTension:"توتر",resetAnger:"غضب",resetShame:"إحراج",resetAnxiety:"قلق",resetExcitement:"حماس"},
+{ar:"احكي عن موقف قدرتي فيه تحلي مشكلة.",en:"Tell me about a time you solved a problem."},
+{ar:"إيه أهم صفة في الشخص اللي بيعرف يتواصل كويس؟",en:"What is the most important quality of a good communicator?"},
+{ar:"اشرحي فكرة تقنية لشخص مش متخصص.",en:"Explain a technical idea to someone who is not an expert."},
+{ar:"إيه رأيك في الشغل ضمن فريق مقارنة بالشغل لوحدك؟",en:"Do you prefer teamwork or working independently? Why?"},
+{ar:"احكي عن حاجة اتعلمتيها مؤخرًا.",en:"Tell me about something you learned recently."},
+{ar:"لو عندك دقيقة تقنعي مديرك بفكرة، هتقولي إيه؟",en:"If you had one minute to pitch an idea to your manager, what would you say?"},
+{ar:"إيه حاجة كنتِ بتخافي منها وبقت أسهل مع الوقت؟",en:"What is something that used to scare you but has become easier?"},
+{ar:"اشرحي مشكلة حصلت في مشروع وإزاي ممكن تتعاملوا معاها.",en:"Describe a project problem and how you would handle it."},
+{ar:"إيه اللي بيخلي الشرح واضح ومقنع؟",en:"What makes an explanation clear and convincing?"},
+{ar:"لو حد قاطعك وإنتِ بتتكلمي، هتتصرفي إزاي؟",en:"What would you do if someone interrupted you while speaking?"},
+{ar:"احكي عن هدف مهني مهم بالنسبالك.",en:"Talk about a professional goal that matters to you."}
+];
+const scenarios={
+unexpected:{en:"Someone asks you without warning: “What is one thing you would improve about this process?”",ar:"حد سألك فجأة: «إيه حاجة واحدة ممكن تطوريها في طريقة الشغل دي؟»"},
+meeting:{en:"In a meeting, a colleague disagrees with your suggestion. Explain your reasoning calmly.",ar:"في اجتماع، زميل اختلف مع اقتراحك. اشرحي وجهة نظرك بهدوء."},
+technical:{en:"A teammate asks why a design issue matters. Explain the issue, impact and next step in 30 seconds.",ar:"زميل سألك ليه مشكلة في التصميم مهمة. اشرحي المشكلة وتأثيرها والخطوة الجاية في ٣٠ ثانية."},
+social:{en:"You meet someone new. Introduce yourself and ask a follow-up question.",ar:"اتعرفتي على شخص جديد. عرّفيه بنفسك واسأليه سؤال يكمل الحوار."}
+};
+let lang='en', promptIndex=0, promptLang='ar', scenario='unexpected', timerInterval=null, timerLeft=120, pressureInterval=null, pressureLeft=5, mediaRecorder=null, chunks=[], recordInterval=null, recordSeconds=0, currentBlob=null;
+let data=JSON.parse(localStorage.getItem('speakflowData')||'{"sessions":[],"reviews":[],"attempts":[]}');
+function t(key){return (dict[lang]&&dict[lang][key])||dict.en[key]||key}
+function applyLanguage(){document.documentElement.lang=lang;document.getElementById('app').classList.toggle('rtl',lang==='ar');document.querySelectorAll('[data-i18n]').forEach(el=>{let k=el.dataset.i18n;if(t(k))el.textContent=t(k)});document.getElementById('langAR').classList.toggle('active',lang==='ar');document.getElementById('langEN').classList.toggle('active',lang==='en');document.getElementById('greeting').textContent=lang==='ar'?'أهلًا بيكي يا سلمى':'Good afternoon, Salma';updatePrompt();updateScenario();renderProgress()}
+document.getElementById('langAR').onclick=()=>{lang='ar';applyLanguage()};document.getElementById('langEN').onclick=()=>{lang='en';applyLanguage()};
+document.querySelectorAll('#nav button').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
+
+let assertiveScenario='boundary', mindInterval=null, mindLeft=90;
+const assertiveScenarios={
+  boundary:{en:"A colleague keeps adding “small” tasks while your priorities are already full. Respond clearly.",ar:"زميل كل شوية يضيف «حاجات صغيرة» وإنتِ عندك أولويات كفاية. ردي بوضوح."},
+  interrupt:{en:"You are explaining an idea and someone cuts you off. Take your turn back without becoming defensive.",ar:"إنتِ بتشرحي فكرة وحد قاطعك. خدي دورك تاني من غير دفاعية."},
+  disagree:{en:"A teammate proposes an approach you think is risky. Disagree and explain why without making it personal.",ar:"زميل اقترح طريقة شايفاها فيها مخاطرة. اختلفي واشرحي ليه من غير ما تخليها شخصية."},
+  negotiate:{en:"You need more time to deliver quality work. Ask for a realistic deadline or a priority trade-off.",ar:"محتاجة وقت أكتر عشان تطلعي شغل كويس. اطلبي موعد واقعي أو حددي إيه الأولوية اللي هتتحرك."}
+};
+function chooseAssertive(s){
+  assertiveScenario=s;
+  document.querySelectorAll('[data-assert]').forEach(b=>b.classList.toggle('active',b.dataset.assert===s));
+  let q=assertiveScenarios[s][lang];
+  document.getElementById('assertiveTitle').textContent=t(s);
+  document.getElementById('assertiveQuestion').textContent=q;
+}
+function coachAssertive(){
+  const answer=document.getElementById('assertiveAnswer').value.trim();
+  const box=document.getElementById('assertiveFeedback');
+  if(!answer){box.textContent=lang==='ar'?'اكتبي ردك الأول حتى لو مش مثالي. الهدف هنا التدريب، مش الاختبار.':'Write your first response, even if it is imperfect. This is practice, not a test.';return;}
+  const hasPoint=/i |أنا |مش |لا|can't|cannot|محتاج|هقدر|أقدر|أقترح|أفضل|ممكن/i.test(answer);
+  const tooLong=answer.split(/\s+/).length>70;
+  box.innerHTML=lang==='ar'
+    ? '<b>تقييم سريع:</b><br>✔ وجود موقف واضح أهم من الكلام الكتير. '+(hasPoint?'ردك فيه موقف/طلب واضح. ':'حاولي تقولي موقفك أو طلبك في أول جملة. ')+(tooLong?'حاولي تختصريه لجملتين أو 3. ':'ممتاز: خليه قصير وقابل للتنفيذ.')+'<br><br><b>قاعدة المرة الجاية:</b> موقف واضح → سبب واحد → بديل/خطوة جاية.'
+    : '<b>Quick coaching:</b><br>✔ Clarity matters more than sounding impressive. '+(hasPoint?'Your response contains a clear position/request. ':'Put your position or request in the first sentence. ')+(tooLong?'Try cutting it to 2–3 sentences. ':'Keep it short and actionable.')+'<br><br><b>Next rep:</b> Clear position → one reason → next step/alternative.';
+}
+function mindReset(){
+  if(mindInterval){clearInterval(mindInterval);mindInterval=null;}
+  mindLeft=90; document.getElementById('mindTimer').textContent='90';
+  mindInterval=setInterval(()=>{mindLeft--;document.getElementById('mindTimer').textContent=mindLeft+'s';if(mindLeft<=0){clearInterval(mindInterval);mindInterval=null;document.getElementById('mindTimer').textContent=lang==='ar'?'خلصت — اختاري الخطوة الصغيرة':'Done — choose the tiny next action';toast(lang==='ar'?'تمام. دلوقتي اعملي خطوة صغيرة واحدة.':'Good. Now take one tiny action.')}},1000);
+  toast(lang==='ar'?'خدي نفس ببطء وركزي على الحقيقة مش القصة.':'Slow down. Focus on facts, not the story.');
+}
+function completeExposure(btn){
+  btn.classList.toggle('done');
+  const msg=btn.classList.contains('done')
+    ? (lang==='ar'?'✔ اتحسبت كـ rep. مش لازم تحسي بالثقة الأول.':'✔ Count it as a rep. You do not need to feel confident first.')
+    : (lang==='ar'?'اختاريها لما تكوني مستعدة.':'Pick it when you are ready.');
+  document.getElementById('exposureWin').textContent=msg;
+}
+function saveMindDebrief(){
+  data.mindDebriefs=data.mindDebriefs||[];
+  data.mindDebriefs.unshift({date:new Date().toISOString(),fact:document.getElementById('mindFact').value,story:document.getElementById('mindStory').value,win:document.getElementById('mindWin').value,next:document.getElementById('mindNext').value});
+  data.mindDebriefs=data.mindDebriefs.slice(0,100);save();
+  ['mindFact','mindStory','mindWin','mindNext'].forEach(id=>document.getElementById(id).value='');
+  toast(lang==='ar'?'اتحفظت المراجعة. كملي يومك.':'Debrief saved. Keep moving.');
+}
+
+function showView(view){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+view));document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===view));window.scrollTo({top:0,behavior:'smooth'});if(view==='progress')renderProgress()}
+function startDaily(){showView('daily');document.getElementById('dailyLanguage').value=lang==='ar'?'ar':'en';document.getElementById('dailyPrompt').textContent=topics[promptIndex][lang];document.getElementById('dailyPrompt').dir=lang==='ar'?'rtl':'ltr';document.getElementById('dailyPromptTranslation').textContent=topics[promptIndex][lang==='ar'?'en':'ar'];}
+function updatePrompt(){let p=topics[promptIndex];document.getElementById('homePromptAR').textContent=p.ar;document.getElementById('homePromptEN').textContent=p.en;document.getElementById('dailyPrompt').textContent=p[document.getElementById('dailyLanguage')?.value||lang];document.getElementById('dailyPrompt').dir=(document.getElementById('dailyLanguage')?.value||lang)==='ar'?'rtl':'ltr';document.getElementById('dailyPromptTranslation').textContent=p[(document.getElementById('dailyLanguage')?.value||lang)==='ar'?'en':'ar'];}
+function setPromptLang(l){promptLang=l;document.getElementById('promptAR').classList.toggle('active',l==='ar');document.getElementById('promptEN').classList.toggle('active',l==='en');document.getElementById('homePromptAR').style.display=l==='ar'?'block':'none';document.getElementById('homePromptEN').style.display=l==='en'?'block':'none';}
+function newPrompt(){promptIndex=(promptIndex+1+Math.floor(Math.random()*(topics.length-1)))%topics.length;updatePrompt();toast(lang==='ar'?'موضوع جديد جاهز':'New prompt ready')}
+document.getElementById('dailyLanguage').addEventListener('change',updatePrompt);document.getElementById('duration').addEventListener('change',()=>{timerLeft=+document.getElementById('duration').value;renderDailyTimer()});
+function renderDailyTimer(){let m=Math.floor(timerLeft/60),s=timerLeft%60;document.getElementById('dailyTimer').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')}
+function startTimer(){if(timerInterval){clearInterval(timerInterval);timerInterval=null;toast(lang==='ar'?'تم إيقاف المؤقت مؤقتًا':'Timer paused');return}if(timerLeft<=0)timerLeft=+document.getElementById('duration').value;timerInterval=setInterval(()=>{timerLeft--;renderDailyTimer();if(timerLeft<=0){clearInterval(timerInterval);timerInterval=null;toast(lang==='ar'?'خلص الوقت، برافو عليكي':'Time is up — well done!')}},1000);toast(lang==='ar'?'ابدئي بهدوء وخدي وقتك':'Start calmly. Take your time.')}
+function save(){localStorage.setItem('speakflowData',JSON.stringify(data));renderProgress()}
+function saveSession(){let reflection=document.getElementById('dailyReflection').value.trim();data.sessions.unshift({date:new Date().toISOString(),topic:topics[promptIndex][document.getElementById('dailyLanguage').value],language:document.getElementById('dailyLanguage').value,seconds:+document.getElementById('duration').value,reflection});data.sessions=data.sessions.slice(0,100);save();toast(lang==='ar'?'اتحفظ التدريب بتاعك':'Practice saved');document.getElementById('dailyReflection').value=''}
+function buildOutline(){let vals=[['1. '+t('intro'),document.getElementById('orgIntro').value],['2. '+t('point1'),document.getElementById('orgP1').value],['3. '+t('point2'),document.getElementById('orgP2').value],['4. '+t('conclusion'),document.getElementById('orgEnd').value]];let topic=document.getElementById('organizeTopic').value.trim();let filled=vals.filter(v=>v[1].trim());let html=(topic?'<b>'+escapeHtml(topic)+'</b><hr>':'')+ (filled.length?filled.map(v=>'<p><b>'+escapeHtml(v[0])+'</b><br>'+escapeHtml(v[1]).replace(/\n/g,'<br>')+'</p>').join(''):'Add a few short notes in the boxes, then build your outline.');document.getElementById('outlineResult').innerHTML=html;window.outlineText=(topic?topic+'\n\n':'')+filled.map(v=>v[0]+'\n'+v[1]).join('\n\n')}
+function clearOutline(){['organizeTopic','orgIntro','orgP1','orgP2','orgEnd'].forEach(id=>document.getElementById(id).value='');document.getElementById('outlineResult').textContent='Your outline will appear here.';window.outlineText=''}
+function copyOutline(){let txt=window.outlineText||'';if(!txt){buildOutline();txt=window.outlineText||''}if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(txt).then(()=>toast('Copied')).catch(()=>toast('Select and copy the outline manually'));else toast('Clipboard not supported in this browser')}
+function chooseScenario(s){scenario=s;document.querySelectorAll('[data-scenario]').forEach(b=>b.classList.toggle('active',b.dataset.scenario===s));updateScenario()}
+function updateScenario(){let q=scenarios[scenario];if(!q)return;let text=q[lang];document.getElementById('scenarioQuestion').textContent=text;document.getElementById('pressureQuestion').textContent=text;document.getElementById('scenarioTitle').textContent=t(scenario);document.getElementById('pressureTitle').textContent=t(scenario)}
+function pressureTimer(){if(pressureInterval){clearInterval(pressureInterval);pressureInterval=null}pressureLeft=5;document.getElementById('pressureTimer').textContent=lang==='ar'?'خدي نفس... ٥':'Pause… 5';pressureInterval=setInterval(()=>{pressureLeft--;document.getElementById('pressureTimer').textContent=pressureLeft>0?(lang==='ar'?'خدي نفس... ':'Pause… ')+pressureLeft:(lang==='ar'?'اتكلمي دلوقتي':'Speak now');if(pressureLeft<=0){clearInterval(pressureInterval);pressureInterval=null}},1000)}
+function savePressure(){let checks=[...document.querySelectorAll('.selfcheck')].filter(c=>c.checked).length;data.attempts.unshift({date:new Date().toISOString(),scenario,answer:document.getElementById('pressureAnswer').value,checks});data.attempts=data.attempts.slice(0,100);data.sessions.unshift({date:new Date().toISOString(),topic:'Pressure practice: '+scenario,seconds:30,language:lang});save();toast(lang==='ar'?'اتحفظت المحاولة':'Attempt saved')}
+async function toggleRecord(){if(mediaRecorder&&mediaRecorder.state==='recording'){stopRecording();return}try{if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia||!window.MediaRecorder){toast(lang==='ar'?'التسجيل مش مدعوم في المتصفح ده. جربي متصفح أحدث أو اتصال آمن.':'Recording is not supported here. Try a modern browser on a secure connection.');return}let stream=await navigator.mediaDevices.getUserMedia({audio:true});chunks=[];mediaRecorder=new MediaRecorder(stream);mediaRecorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data)};mediaRecorder.onstop=()=>{currentBlob=new Blob(chunks,{type:mediaRecorder.mimeType||'audio/webm'});let audio=document.getElementById('audioPlayback');audio.src=URL.createObjectURL(currentBlob);audio.style.display='block';stream.getTracks().forEach(tr=>tr.stop());toast(lang==='ar'?'التسجيل جاهز، اسمعيه وراجعيه':'Recording ready — listen and reflect')};mediaRecorder.start();recordSeconds=0;updateRecordTime();document.getElementById('quickRecord').classList.add('recording');document.getElementById('mainRecord').classList.add('recording');document.getElementById('recordLabel').textContent=lang==='ar'?'إيقاف التسجيل':'Stop recording';document.getElementById('mainRecordLabel').textContent=lang==='ar'?'إيقاف التسجيل':'Stop recording';recordInterval=setInterval(()=>{recordSeconds++;updateRecordTime()},1000);toast(lang==='ar'?'التسجيل بدأ':'Recording started')}catch(e){toast(lang==='ar'?'مش قادرين نوصل للميكروفون. راجعي صلاحيات المتصفح.':'Microphone unavailable. Check your browser permissions.');}}
+function updateRecordTime(){let v=String(Math.floor(recordSeconds/60)).padStart(2,'0')+':'+String(recordSeconds%60).padStart(2,'0');['recordTime','mainRecordTime'].forEach(id=>document.getElementById(id).textContent=v)}
+function stopRecording(){if(mediaRecorder&&mediaRecorder.state==='recording'){mediaRecorder.stop();document.getElementById('quickRecord').classList.remove('recording');document.getElementById('mainRecord').classList.remove('recording');document.getElementById('recordLabel').textContent=t('startRecording');document.getElementById('mainRecordLabel').textContent=t('startRecording');if(recordInterval)clearInterval(recordInterval);recordInterval=null}else toast(lang==='ar'?'مفيش تسجيل شغال دلوقتي':'No recording is active')}
+function saveReview(){data.reviews.unshift({date:new Date().toISOString(),pause:document.getElementById('reviewPause').value,clear:document.getElementById('reviewClear').value,focus:document.getElementById('reviewFocus').value,notes:document.getElementById('reviewNotes').value});data.reviews=data.reviews.slice(0,100);save();toast(lang==='ar'?'اتحفظت المراجعة':'Reflection saved')}
+function renderProgress(){let sessions=data.sessions||[], attempts=data.attempts||[], count=sessions.length, minutes=Math.round(sessions.reduce((a,s)=>a+(s.seconds||0),0)/60),goal=Math.min(100,Math.round(count/20*100)),weekly=sessions.filter(s=>Date.now()-new Date(s.date).getTime()<7*86400000).length;document.getElementById('sessionCount').textContent=count;document.getElementById('minuteCount').textContent=minutes;document.getElementById('progressPercent').textContent=goal+'%';document.getElementById('progressRing').style.setProperty('--progress',goal+'%');document.getElementById('weeklyText').textContent=Math.min(weekly,5)+' / 5';document.getElementById('weeklyBar').style.width=Math.min(100,weekly/5*100)+'%';let days=new Set(sessions.filter(s=>Date.now()-new Date(s.date).getTime()<30*86400000).map(s=>new Date(s.date).toDateString()));document.getElementById('streakCount').textContent=days.size+(lang==='ar'?' يوم':' days');document.getElementById('encourageText').textContent=count===0?(lang==='ar'?'🌱 أول تدريب هو البداية. ابدئي بدقيقة واحدة بس.':'🌱 Your first session is the start. Begin with just one minute.'):(lang==='ar'?'👏 عملتي '+count+' تدريبات. كل مرة بتدي لنفسك فرصة تتكلمي بشكل أوضح.':'👏 You’ve completed '+count+' sessions. Every practice gives you a chance to speak more clearly.');let hist=document.getElementById('historyList');hist.innerHTML='';if(!sessions.length){hist.innerHTML='<p class="notice">'+(lang==='ar'?'لسه مفيش تدريبات محفوظة. أول تدريب ليكي هيظهر هنا.':'No saved practice yet. Your first session will appear here.')+'</p>'}else sessions.slice(0,6).forEach(s=>{let d=new Date(s.date);let row=document.createElement('div');row.className='history-item';let left=document.createElement('span');left.textContent=(s.topic||'Practice')+' · '+d.toLocaleDateString();let right=document.createElement('b');right.textContent=Math.max(1,Math.round((s.seconds||0)/60))+' min';row.append(left,right);hist.appendChild(row)})}
+function exportData(){let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='speakflow-practice-data.json';a.click();URL.revokeObjectURL(url)}
+function resetData(){if(confirm(lang==='ar'?'متأكدة إنك عايزة تمسحي كل سجل التدريب؟':'Are you sure you want to clear all practice history?')){data={sessions:[],reviews:[],attempts:[]};save();toast(lang==='ar'?'اتمسح السجل':'History cleared')}}
+function toast(msg){let el=document.getElementById('toast');el.textContent=msg;el.style.display='block';clearTimeout(window.toastTimeout);window.toastTimeout=setTimeout(()=>el.style.display='none',2800)}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+document.getElementById('homePromptEN').style.display='none';setPromptLang('ar');chooseScenario('unexpected');chooseAssertive('boundary');renderDailyTimer();applyLanguage();
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  try{
+    chooseWork('interrupt'); chooseCareer('intro'); chooseFeeling('anxiety',document.querySelector('.feeling'));
+    updateDailyUI(); renderWeekly();
+  }catch(e){}
+});
+
+
+const _originalApplyLanguage = (typeof applyLanguage==='function') ? applyLanguage : null;
+if(_originalApplyLanguage){
+  applyLanguage = function(){
+    _originalApplyLanguage();
+    try{renderWork();renderCareer();chooseFeeling(feeling,document.querySelector(`[data-feel="${feeling}"]`));updateDailyUI();renderWeekly();}catch(e){}
+  }
+}
+
+const path30Data=[["Clarity", "Say the point first", "Open with your conclusion, then give one reason. Record 30 seconds.", "30 sec: say “My recommendation is…” 3 times with different topics.", "In one real conversation, lead with the point before background.", "Clarity"], ["Clarity", "Shorter answers", "Practice answering without building a long runway.", "Answer: “What are you working on?” in 20 seconds.", "Give one concise answer today without apologizing for being brief.", "Clarity"], ["Clarity", "Explain a technical idea simply", "Translate one engineering idea for a non-engineer.", "Explain one S-MEP concept using a simple analogy.", "Explain a technical point to someone without using jargon.", "Clarity"], ["Clarity", "Stop over-explaining", "Use one reason, then stop.", "Give one reason for a decision and hold silence for 3 seconds.", "When someone asks why, give the strongest reason first.", "Clarity"], ["Clarity", "One-minute story", "Problem → action → result.", "Tell one project story in 60 seconds.", "Use the structure in a real work update.", "Clarity"], ["Presence", "Voice pace", "Slow down at the beginning and finish sentences.", "Record 45 sec; pause after each main point.", "In one conversation, deliberately slow your first 2 sentences.", "Presence"], ["Presence", "Eye contact / attention", "Practice staying with the listener instead of monitoring yourself.", "Record while looking at the camera/lens, not your own preview.", "Hold attention through one complete explanation.", "Presence"], ["Presence", "Ask better questions", "Replace nervous talking with useful curiosity.", "Prepare 3 follow-up questions: goal, constraint, next step.", "Ask one real question before offering your solution.", "Presence"], ["Presence", "Pause before answering", "Teach your body that silence is safe.", "Count 1–2 silently before answering 5 prompts.", "Use one deliberate pause in a meeting or call.", "Presence"], ["Presence", "Recover from a stumble", "Practice continuing instead of restarting.", "Say: “Let me put that more clearly…” and continue.", "If you stumble today, do not apologize more than once.", "Presence"], ["Assertiveness", "Interruptions", "Take your turn back calmly.", "Practice: “Let me finish this point, then I’ll come to you.”", "Use a short version if interrupted.", "Assertiveness"], ["Assertiveness", "Say no", "Acknowledge → position → alternative.", "Write 3 versions of a respectful no.", "Say no to one low-value request or renegotiate timing.", "Assertiveness"], ["Assertiveness", "Scope creep", "Protect the agreement without sounding hostile.", "Practice: “That’s outside the current scope; we can add it as…”", "Clarify one boundary instead of absorbing extra work silently.", "Assertiveness"], ["Assertiveness", "Public criticism", "Separate the useful point from the emotional hit.", "Practice: “Let’s separate the specific issue from the general conclusion.”", "Ask for one concrete example when criticized.", "Assertiveness"], ["Assertiveness", "Ask for recognition", "Lead with evidence, then make the ask.", "Build a 45-sec value case: contribution → impact → ask.", "Name one contribution you made without minimizing it.", "Assertiveness"], ["Work impact", "Project update", "Make your update decision-friendly.", "Use: status → risk → action needed.", "Give a project update in 60 seconds.", "Work impact"], ["Work impact", "S-MEP for a manager", "Focus on business value, not every feature.", "Problem → workflow → result.", "Explain S-MEP to a non-technical listener.", "Work impact"], ["Work impact", "Difficult project", "Show judgment under constraints.", "Problem → decision → tradeoff → result.", "Tell the story to someone you trust or record it.", "Work impact"], ["Work impact", "Disagreement", "Disagree with the idea, not the person.", "Practice: “I see it differently because…”", "State one professional disagreement without softening it into meaninglessness.", "Work impact"], ["Work impact", "Negotiation", "Trade scope/time/resources consciously.", "Prepare 2 variables you can trade and 1 you cannot.", "Negotiate one deadline, scope or priority instead of silently absorbing it.", "Work impact"], ["English + leadership", "English introduction", "Build a natural 45-sec professional intro.", "Record: background → problem space → strength → direction.", "Use your intro aloud before any English professional interaction.", "English + leadership"], ["English + leadership", "S-MEP in English", "Explain the value without translating word-for-word.", "Use simple English: problem → solution → measurable result.", "Give a 60-sec English S-MEP explanation.", "English + leadership"], ["English + leadership", "Meeting phrases", "Build a small bank you can retrieve under pressure.", "Practice 5 phrases: clarify, disagree, buy time, close, ask.", "Use one phrase in an English message/call.", "English + leadership"], ["English + leadership", "Interview story", "Answer with evidence, not adjectives.", "Prepare STAR-style evidence for one strength.", "Record a 90-sec answer to “Tell me about a challenge.”", "English + leadership"], ["English + leadership", "Sell your tool", "Talk value before features.", "Pitch S-MEP to a company in 60 seconds.", "Write or say a mini pitch using one measurable outcome.", "English + leadership"], ["English + leadership", "Leadership: set direction", "Move from “I think” to “Here’s what I recommend.”", "Practice recommendation + rationale + next action.", "Make one recommendation clearly today.", "English + leadership"], ["English + leadership", "Leadership: handle pushback", "Stay steady when challenged.", "Practice: acknowledge → clarify → answer → next step.", "Ask one clarifying question before defending your idea.", "English + leadership"], ["English + leadership", "Leadership: own mistakes", "Recover without self-attack.", "Say: “Here’s what happened, what I learned, and what I’ll change.”", "If you make a mistake, communicate the fix instead of hiding.", "English + leadership"], ["English + leadership", "Final pressure test", "Combine clarity + assertiveness + career story.", "2-min mock meeting: update, disagreement, ask.", "Record one uninterrupted 2-minute response.", "English + leadership"], ["English + leadership", "Day 30: your new baseline", "Compare your behavior, not your mood.", "Repeat the Day 1 clarity task and the 5-score assessment.", "Choose the 3 behaviors you will keep for the next month.", "English + leadership"]];
+let pathDay = Number(localStorage.getItem('speakflow_path_day')||1);
+function renderPathDay(){
+ const i=Math.min(30,Math.max(1,pathDay))-1, d=path30Data[i];
+ document.getElementById('pathDayTag').textContent=(lang==='ar'?'اليوم ':'Day ')+ (i+1) +' / 30';
+ document.getElementById('pathDayNumber').textContent=(lang==='ar'?'اليوم ':'DAY ')+(i+1);
+ document.getElementById('pathDayTitle').textContent=lang==='ar'?arPathTitle(i):d[1];
+ document.getElementById('pathDayMission').textContent=lang==='ar'?arPathMission(i):d[2];
+ document.getElementById('pathWarmup').textContent=lang==='ar'?arPathWarmup(i):d[3];
+ document.getElementById('pathDrill').textContent=lang==='ar'?arPathDrill(i):d[2];
+ document.getElementById('pathExposure').textContent=lang==='ar'?arPathExposure(i):d[4];
+ document.getElementById('pathProgressBar').style.width=((i+1)/30*100)+'%';
+ const done=(data.pathDone||[]).includes(i+1);
+ document.getElementById('pathCoach').textContent=done?(lang==='ar'?'✔ خلصتي اليوم ده. التكرار أهم من المثالية.':'✔ Completed. Repetition beats perfection.'):'';
+}
+function arPathTitle(i){return ["قولي النقطة الأول","إجابات أقصر","اشرحي فكرة فنية ببساطة","وقفي الشرح الزيادة","قصة دقيقة واحدة","سرعة صوتك","الانتباه بدل مراقبة نفسك","اسألي أسئلة أحسن","اسكتي ثانية قبل الرد","اتعاملي مع اللخبطة بسرعة","المقاطعة","قولي لأ","حدود الـscope","النقد قدام الناس","اطلبي تقديرك","تحديث مشروع واضح","S-MEP لمدير مشروع","أصعب مشروع","الاختلاف المهني","التفاوض","تعريفك بنفسك بالإنجليزي","S-MEP بالإنجليزي","عبارات الاجتماعات","قصة مقابلة","سوّقي أداتك","قيادة: حددي التوصية","قيادة: تعاملي مع الاعتراض","قيادة: امتلكي الخطأ","اختبار الضغط النهائي","اليوم 30: خط البداية الجديد"][i]}
+function arPathMission(i){return ["ابدئي بالخلاصة ثم سبب واحد.","جاوبي على سؤال بسيط في 20 ثانية.","حوّلي فكرة هندسية لكلام يفهمه غير المتخصص.","سبب واحد قوي كفاية؛ مش محتاجة تبرري كل حاجة.","احكي مشروعًا: المشكلة ثم تصرفك ثم النتيجة.","ابدئي ببطء وأنهي الجمل كاملة.","ركزي على الشخص بدل ما تراقبي أداءك.","استخدمي السؤال بدل الكلام الزائد.","درّبي جسمك إن السكوت مش خطر.","كملي حتى لو لخبطتي بدل ما تعتذري وتختفي.","خدي دورك من غير عدوانية.","ارفُضي الطلب مع بديل واقعي.","احمي الاتفاق من غير ما تحوليها لخناقة.","افصلي النقطة المفيدة عن الإحراج.","قدمي قيمة عملك ثم اطلبي بوضوح.","خلي تحديثك يساعد على اتخاذ قرار.","بيعي قيمة S-MEP، مش قائمة مميزات.","أظهري الحكم والـtrade-off، مش المعاناة فقط.","قولي إنك مختلفة وفسري لماذا.","فاوِضي على المتغيرات بدل امتصاص كل الضغط.","ابني تقديمًا مهنيًا طبيعيًا.","اشرحي القيمة بالإنجليزي من غير ترجمة حرفية.","كوّني بنك عبارات تستدعيه تحت الضغط.","جاوبي بأدلة بدل صفات عامة.","قدمي مشكلة ونتيجة قبل المميزات.","استبدلي «أنا أعتقد» بـ«توصيتي هي».","اسألي للتوضيح قبل ما تدافعي عن نفسك.","صححي الخطأ بخطة بدل جلد الذات.","اجمعي التحديث والاختلاف والطلب في دقيقتين.","قارني سلوكك اليوم بسلوكك يوم 1 واختاري 3 عادات تستمري عليها."][i]}
+function arPathWarmup(i){return ["قولي «توصيتي هي…» 3 مرات.","سجلي إجابة 20 ثانية.","اشرحي فكرة S-MEP كأنك بتكلمي شخص غير هندسي.","قولي سببًا واحدًا ثم اسكتي 3 ثوانٍ.","سجلي قصة 60 ثانية.","سجلي 45 ثانية واعملي pause بين النقاط.","بصي للكاميرا/عدسة الهاتف بدل صورتك.","اكتبي 3 أسئلة: الهدف، القيد، الخطوة التالية.","عدّي 1–2 في دماغك قبل كل إجابة.","تدربي على: «خليني أوضحها بشكل أدق…»","تدربي على: «خليني أكمل النقطة دي وبعدها أسمعك.»","اكتبي 3 طرق محترمة للرفض.","تدربي على: «ده خارج النطاق الحالي؛ نقدر نضيفه كـ…»","تدربي على طلب مثال محدد.","اكتبي مساهمة + أثر + طلب.","تدربي على: الحالة → الخطر → المطلوب.","اشرحي S-MEP في 60 ثانية.","احكي: المشكلة → القرار → الـtrade-off → النتيجة.","تدربي على: «أنا شايفة الموضوع بشكل مختلف لأن…»","حددي متغيرين للتفاوض وشيئًا واحدًا غير قابل للتنازل.","سجلي تعريفًا مهنيًا 45 ثانية.","اشرحي S-MEP بالإنجليزي في 60 ثانية.","كرري 5 عبارات اجتماعات بصوت عالٍ.","سجلي إجابة 90 ثانية عن تحدٍ.","اعملي pitch لمدة 60 ثانية.","قولي توصية + سبب + خطوة تالية.","قولي: acknowledge → clarify → answer → next step.","قولي: «ده اللي حصل، ده اللي اتعلمته، وده اللي هغيره.»","اعملي mock meeting دقيقتين.","كرري مهمة يوم 1 ثم اعملي الـscorecard."][i]}
+function arPathDrill(i){return path30Data[i][2]}
+function arPathExposure(i){return path30Data[i][4]}
+function completePathDay(){
+ data.pathDone=data.pathDone||[]; if(!data.pathDone.includes(pathDay)) data.pathDone.push(pathDay);
+ data.pathDone=data.pathDone.slice(-30); localStorage.setItem('speakflow_path_day',String(Math.min(30,pathDay+1))); save(); 
+ document.getElementById('pathCoach').textContent=lang==='ar'?'✔ اتحسبت. بكرة نطلع درجة واحدة بس.':'✔ Counted. Tomorrow we increase the difficulty by one step.';
+}
+function nextPathDay(){pathDay=Math.min(30,pathDay+1);localStorage.setItem('speakflow_path_day',String(pathDay));renderPathDay()}
+function previousPathDay(){pathDay=Math.max(1,pathDay-1);localStorage.setItem('speakflow_path_day',String(pathDay));renderPathDay()}
+function initScoreInputs(){
+ ['Clarity','Assertive','Delivery','English','Recovery'].forEach(k=>{const x=document.getElementById('score'+k),v=document.getElementById('score'+k+'Val');if(x){x.oninput=()=>v.textContent=x.value;}});
+}
+function saveAssessment(){
+ data.assessments=data.assessments||[];
+ const item={date:new Date().toISOString(),clarity:+scoreClarity.value,assertive:+scoreAssertive.value,delivery:+scoreDelivery.value,english:+scoreEnglish.value,recovery:+scoreRecovery.value,win:assessmentWin.value,block:assessmentBlock.value};
+ data.assessments.unshift(item);data.assessments=data.assessments.slice(0,20);save();
+ document.getElementById('assessmentFeedback').textContent=lang==='ar'?'اتحفظ الـscorecard. قارني السلوك بعد 7 أيام، مش شعورك في نفس اليوم.':'Scorecard saved. Compare behavior after 7 days, not how you felt on one day.';
+}
+
+document.addEventListener('DOMContentLoaded',()=>{try{renderPathDay();initScoreInputs();}catch(e){}});
+
+const flowPrompts = [
+ "اشرحِي مشكلة فنية في مشروعك لشخص غير متخصص في 60 ثانية.",
+ "مديرك سألك فجأة: إيه أهم حاجة محتاجة تتغير في طريقة شغلك؟",
+ "اشرحي S-MEP لشخص ممكن يشتريه، من غير ما تدخلي في تفاصيل تقنية كثيرة.",
+ "عميل طلب تعديلًا خارج الاتفاق. ردي في 45 ثانية.",
+ "اختلاف مهني: قولي رأيك، سببك، والبديل.",
+ "قدمي نفسك في مقابلة: خلفيتك → قوتك → القيمة التي تضيفينها.",
+ "اشرحي أصعب مشروع اشتغلتي عليه: المشكلة → القرار → النتيجة.",
+ "في اجتماع، حد قاطعك. خدي دورك مرة أخرى بهدوء.",
+ "Why should a company care about S-MEP? Answer in 60 seconds.",
+ "Tell me about a difficult project and what you learned from it.",
+ "Disagree with a project decision professionally in English.",
+ "Give a 45-second professional introduction in English."
+];
+let flowRecorder=null, flowChunks=[], flowRecognition=null, flowStart=0, flowTimerHandle=null;
+
+function startFlowTimer(){
+ clearInterval(flowTimerHandle);
+ let left=10; document.getElementById('flowTimer').textContent='00:10';
+ flowTimerHandle=setInterval(()=>{left--;document.getElementById('flowTimer').textContent='00:'+String(Math.max(0,left)).padStart(2,'0');if(left<=0){clearInterval(flowTimerHandle);document.getElementById('flowTimer').textContent=lang==='ar'?'اتكلمي':'SPEAK';}},1000);
+}
+function randomFlowPrompt(){
+ const p=flowPrompts[Math.floor(Math.random()*flowPrompts.length)];
+ document.getElementById('flowTopic').value=p;
+ document.getElementById('flowCoach').textContent=lang==='ar'?'التحدي: 10 ثواني ترتيب فقط، مش كتابة إجابة كاملة.':'Challenge: you get 10 seconds to organize, not to write a perfect answer.';
+}
+function startFlowRecord(){
+ if(!navigator.mediaDevices || !window.MediaRecorder){document.getElementById('flowCoach').textContent=lang==='ar'?'المتصفح لا يدعم التسجيل هنا. استخدمي Chrome/Edge.':'Recording is not supported here. Try Chrome/Edge.';return;}
+ navigator.mediaDevices.getUserMedia({audio:true}).then(stream=>{
+   flowChunks=[]; flowRecorder=new MediaRecorder(stream); flowStart=Date.now();
+   flowRecorder.ondataavailable=e=>{if(e.data.size)flowChunks.push(e.data)};
+   flowRecorder.onstop=()=>{stream.getTracks().forEach(t=>t.stop()); const sec=(Date.now()-flowStart)/1000; const words=(document.getElementById('flowTranscript').textContent||'').trim().split(/\s+/).filter(Boolean).length; const wpm=sec>5?Math.round(words/(sec/60)):0; document.getElementById('flowPace').textContent=wpm? wpm+' WPM':'recorded'; document.getElementById('flowCoach').textContent=lang==='ar'?'اسمعي التسجيل مرة واحدة فقط، واكتبي 1 شيء واضح + 1 شيء ستبطئينه المرة القادمة.':'Listen once only. Write 1 thing that was clear + 1 thing you will slow down next time.'; saveFlowAttempt(sec,wpm);};
+   flowRecorder.start(); document.getElementById('flowCoach').textContent=lang==='ar'?'اتكلمي. مش لازم تكوني مثالية.':'Speak. You do not need to be perfect.';
+   startSpeechRecognition();
+   setTimeout(()=>{if(flowRecorder && flowRecorder.state==='recording')stopFlowRecord()},60000);
+ }).catch(()=>document.getElementById('flowCoach').textContent=lang==='ar'?'محتاجين صلاحية الميكروفون للتسجيل.':'Microphone permission is needed to record.');
+}
+function stopFlowRecord(){if(flowRecorder&&flowRecorder.state==='recording')flowRecorder.stop();if(flowRecognition){try{flowRecognition.stop()}catch(e){}}}
+function startSpeechRecognition(){
+ const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR)return;
+ flowRecognition=new SR();flowRecognition.continuous=true;flowRecognition.interimResults=true;
+ const mode=document.getElementById('flowMode').value;
+ flowRecognition.lang=mode==='english'?'en-US':'ar-EG';
+ document.getElementById('flowTranscriptBox').classList.remove('hidden');
+ document.getElementById('flowTranscript').textContent='';
+ flowRecognition.onresult=e=>{let t='';for(let i=0;i<e.results.length;i++)t+=e.results[i][0].transcript+' ';document.getElementById('flowTranscript').textContent=t.trim()};
+ try{flowRecognition.start()}catch(e){}
+}
+function scoreFlow(){
+ const t=(document.getElementById('flowTranscript').textContent||'').trim();
+ const topic=document.getElementById('flowTopic').value.trim();
+ const p1=document.getElementById('flowP1').value.trim(),p2=document.getElementById('flowP2').value.trim(),p3=document.getElementById('flowP3').value.trim();
+ let clarity=(topic?2:0)+(p1?2:0)+(p2?1:0)+(p3?1:0);
+ let jumps=(t.match(/\b(طيب|يعني|بس|وبعدين|actually|so|and then)\b/gi)||[]).length;
+ document.getElementById('flowJumps').textContent=jumps;
+ document.getElementById('flowClarity').textContent=Math.min(10,4+clarity)+'/10';
+ document.getElementById('flowCoach').textContent=lang==='ar'
+ ? (jumps>4?'عندك انتقالات كثيرة: اختاري نقطة واحدة، خلصيها، وبعدها انتقلي.':'كويس. ركزي المرة الجاية على pause صغيرة بعد كل نقطة.')
+ : (jumps>4?'Too many track switches: finish one point before moving to the next.':'Good. Next round, add a tiny pause after each point.');
+}
+function saveFlowAttempt(sec,wpm){
+ data.flowAttempts=data.flowAttempts||[];
+ data.flowAttempts.unshift({date:new Date().toISOString(),topic:document.getElementById('flowTopic').value,seconds:Math.round(sec),wpm:wpm});
+ data.flowAttempts=data.flowAttempts.slice(0,50);save();
+}
+function quickReset(type){
+ const ar={
+ tension:"سمّي الشعور: توتر. خدي زفير أطول من الشهيق مرتين. الحقيقة: «الموقف انتهى». قولي لنفسك: «أنا بتعلم، مش بُحاكم». الخطوة: اكتبي جملة واحدة ستقولينها المرة القادمة.",
+ anger:"سمّي الشعور: غضب. ابعدي دقيقة عن الرد. الحقيقة: «أنا أقدر أختار الرد». قولي لنفسك: «مش لازم أصلح كل شيء الآن». الخطوة: اكتبي الحد الذي تريدين وضعه.",
+ shame:"سمّي الشعور: إحراج. الحقيقة: «لحظة awkward لا تساوي شخصيتي». قولي لصاحبتك: «عادي، كملي». الخطوة: أعيدي نفس الجملة مرة واحدة بصوت هادئ.",
+ anxiety:"سمّي الشعور: قلق. خدي نفسًا بطيئًا. الحقيقة: «أنا لا أعرف النتيجة بعد». قولي لنفسك: «مهمتي الخطوة التالية فقط». الخطوة: حددي سؤالًا واحدًا أو إجراءً واحدًا.",
+ excitement:"سمّي الشعور: حماس. خففي السرعة بدل ما تكتمي الطاقة. الحقيقة: «عندي طاقة، وأقدر أوجّهها». الخطوة: قولي النقطة الأساسية أولًا."
+ };
+ const en={
+ tension:"Name it: tension. Two longer exhales. Fact: “The moment is over.” Say: “I am training, not judging myself.” Next step: write one sentence you will use next time.",
+ anger:"Name it: anger. Step away before replying. Fact: “I can choose my response.” Say: “I do not have to fix everything now.” Next step: write the boundary you need.",
+ shame:"Name it: embarrassment. Fact: “An awkward moment is not my identity.” Tell your friend: “It is okay, continue.” Next step: repeat the sentence once, calmly.",
+ anxiety:"Name it: anxiety. Slow your breath. Fact: “I do not know the outcome yet.” Say: “My job is only the next step.” Next step: choose one question or action.",
+ excitement:"Name it: excitement. Slow the pace instead of suppressing the energy. Fact: “I have energy and I can direct it.” Next step: say the main point first."
+ };
+ document.getElementById('resetResult').textContent=(lang==='ar'?ar[type]:en[type]);
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  try{
+    if(typeof renderPathDay==='function') renderPathDay();
+    if(typeof initScoreInputs==='function') initScoreInputs();
+    const ft=document.getElementById('flowTopic'); if(ft) ft.value=lang==='ar'?'اشرحي فكرة أو مشكلة في شغلك في 60 ثانية.':'Explain a work idea or problem in 60 seconds.';
+  }catch(e){}
+});
+</script>
+
+<script>
+/* ===== Salma Recovery v5 ===== */
+(function(){
+  const $ = (s, r=document) => r.querySelector(s);
+  const esc = s => String(s||'').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  const storeKey = 'speakflow_salma_v5_recovery';
+  let state = JSON.parse(localStorage.getItem(storeKey)||'{"self":[],"recovery":[],"ladder":[],"wins":[]}');
+  function save(){localStorage.setItem(storeKey, JSON.stringify(state));}
+
+  window.SalmaRecovery = {
+    saveSelf(type, text){
+      if(!text.trim()) return;
+      state.self.push({type,text:text.trim(),at:new Date().toISOString()});
+      save();
+    },
+    saveRecovery(item){
+      state.recovery.push({...item,at:new Date().toISOString()});
+      save();
+    }
+  };
+
+  function mount(){
+    if($('#self-expression') || !document.body) return;
+
+    const wrap = document.createElement('section');
+    wrap.id='self-expression';
+    wrap.className='section';
+    wrap.innerHTML=`
+      <div class="section-head">
+        <div><span class="eyebrow">SELF-EXPRESSION</span><h2>أعرف نفسي وأعرف أعبّر عنها</h2>
+        <p>مش الهدف إنك تلاقي “الكلام المثالي”. الهدف إنك تعرفي ما الذي تشعرين به، وما الذي تريدينه، ثم تعبّري عنه ببساطة.</p></div>
+      </div>
+      <div class="recovery-grid">
+        <div class="recovery-card">
+          <h3>جملة واحدة أولًا</h3>
+          <p>اختاري موقفًا واكتبي الجملة التي تريدين أن يفهمها الشخص الآخر، قبل أي شرح.</p>
+          <input id="seSituation" class="input" placeholder="مثال: حد قاطعني وأنا بتكلم">
+          <textarea id="sePoint" class="textarea" rows="3" placeholder="النقطة الأساسية: أنا عايزة أقول إيه؟"></textarea>
+          <button class="btn primary" id="seCoach">حوّلها لجملة واضحة</button>
+          <div class="coach-output" id="seOut" hidden></div>
+        </div>
+        <div class="recovery-card">
+          <h3>What do I need?</h3>
+          <div class="self-grid">
+            <button class="self-btn" data-self="feeling">أنا حاسة بـ…</button>
+            <button class="self-btn" data-self="need">أنا محتاجة…</button>
+            <button class="self-btn" data-self="boundary">أنا مش موافقة على…</button>
+            <button class="self-btn" data-self="opinion">أنا رأيي…</button>
+            <button class="self-btn" data-self="request">أنا عايزة أطلب…</button>
+            <button class="self-btn" data-self="uncertain">أنا مش متأكدة، وده مقبول.</button>
+          </div>
+          <div class="coach-output" id="sePrompt">اختاري نوع التعبير الذي تريدين التدريب عليه.</div>
+        </div>
+        <div class="recovery-card">
+          <h3>Anti-overexplaining</h3>
+          <p>قولي الإجابة أولًا. لو احتاج الشخص تفاصيل، زوّديها. مش مطلوب منك إثبات حقك بعشر جمل.</p>
+          <div class="ladder">
+            <div class="step"><b>1</b><br>Point</div>
+            <div class="step"><b>2</b><br>Reason</div>
+            <div class="step"><b>3</b><br>Example</div>
+            <div class="step"><b>4</b><br>Stop</div>
+          </div>
+          <p class="v5-note">جملة الإنقاذ: <b>“خليني أقولها ببساطة: النقطة الأساسية هي…”</b></p>
+        </div>
+      </div>
+    `;
+    const anchor = document.querySelector('#thought-speech');
+    if(anchor) anchor.parentNode.insertBefore(wrap, anchor);
+    else document.body.appendChild(wrap);
+
+    $('#seCoach').onclick=()=>{
+      const p=$('#sePoint').value.trim(), s=$('#seSituation').value.trim();
+      if(!p){$('#seOut').hidden=false;$('#seOut').textContent='اكتبي الفكرة الأساسية الأول. مش لازم تكون مرتبة.';return;}
+      const out = `في موقف ${s||'ده'}، جملتك الأساسية ممكن تكون: “${p}”. وبعدها اسكتي ثانية واحدة. لو الشخص محتاج تفاصيل، ادي سببًا واحدًا أو مثالًا واحدًا فقط.`;
+      $('#seOut').hidden=false; $('#seOut').textContent=out;
+      SalmaRecovery.saveSelf('point',p);
+    };
+    document.querySelectorAll('[data-self]').forEach(b=>b.onclick=()=>{
+      const map={
+        feeling:'أنا حاسة بـ ______، ومش محتاجة أبرر الإحساس عشان يكون حقيقي.',
+        need:'أنا محتاجة ______. هل تقدر/ي تساعدني في ده؟',
+        boundary:'أنا مش مرتاحة لـ ______، ومش هقدر أوافق عليه بالشكل ده.',
+        opinion:'أنا شايفة إن ______، والسبب الأهم بالنسبة لي هو ______.',
+        request:'أنا عايزة أطلب منك ______. لو مش مناسب، قول/ي لي.',
+        uncertain:'أنا مش عارفة الإجابة دلوقتي، ومش لازم أحسمها في نفس اللحظة.'
+      };
+      $('#sePrompt').textContent=map[b.dataset.self];
+      SalmaRecovery.saveSelf(b.dataset.self,map[b.dataset.self]);
+    });
+
+    const rec = document.createElement('section');
+    rec.id='recovery';
+    rec.className='section';
+    rec.innerHTML=`
+      <div class="section-head">
+        <div><span class="eyebrow">RECOVERY MODE</span><h2>أعيش حياتي بدون ما أجاوب كل فكرة</h2>
+        <p>قسم داعم للتعافي: نركز على السلوك والمرونة وتحمل عدم اليقين، وليس تحليل محتوى الوسواس أو طلب الطمأنة.</p></div>
+      </div>
+      <div class="recovery-grid">
+        <div class="recovery-card">
+          <h3>Urge → Choice</h3>
+          <p>لما ييجي urge للفحص، السؤال المتكرر، التحليل، أو طلب الطمأنة:</p>
+          <ol>
+            <li>لاحظي الـurge بدون ما تحاولي تثبتي إن الفكرة غلط.</li>
+            <li>سمي السلوك المطلوب: “ده urge للـchecking / reassurance / mental review”.</li>
+            <li>اختاري عدم تنفيذ الاستجابة الآن.</li>
+            <li>ارجعي لفعل صغير مهم في حياتك.</li>
+          </ol>
+          <button class="btn primary" id="urgeBtn">سجّلي اختيارًا</button>
+          <div id="urgeOut" class="coach-output" hidden></div>
+        </div>
+        <div class="recovery-card">
+          <h3>Fact vs Story</h3>
+          <p>مش عشان نحل الفكرة؛ فقط عشان نمنع العقل من تحويل الشعور إلى أمر لازم نتصرف عليه.</p>
+          <input id="fact" class="input" placeholder="ما الذي حدث فعلًا؟">
+          <input id="story" class="input" placeholder="ما القصة/الخوف الذي أضافه عقلي؟">
+          <button class="btn" id="factBtn">أكمل بدون حل</button>
+          <div id="factOut" class="coach-output" hidden></div>
+        </div>
+        <div class="recovery-card">
+          <h3>Life First</h3>
+          <p>بعد الـurge، اختاري شيئًا من حياتك—not another analysis.</p>
+          <div class="self-grid">
+            <button class="self-btn" data-life="talk">أتكلم مع شخص</button>
+            <button class="self-btn" data-life="work">أكمل مهمة</button>
+            <button class="self-btn" data-life="move">أتحرك/أخرج</button>
+            <button class="self-btn" data-life="fun">أعمل حاجة ممتعة</button>
+            <button class="self-btn" data-life="rest">أرتاح بدون checking</button>
+            <button class="self-btn" data-life="create">أعمل شيئًا إبداعيًا</button>
+          </div>
+          <div id="lifeOut" class="coach-output">اختاري فعلًا واحدًا، صغيرًا، وابدئي.</div>
+        </div>
+        <div class="recovery-card">
+          <h3>Compression Ladder</h3>
+          <p>لتدريب التعبير والمرونة معًا: نفس الفكرة في أحجام أصغر.</p>
+          <div class="ladder">
+            <div class="step"><b>60s</b><br>اشرحِي</div>
+            <div class="step"><b>30s</b><br>اختصري</div>
+            <div class="step"><b>15s</b><br>النقطة</div>
+            <div class="step"><b>1 sentence</b><br>اتركيها</div>
+          </div>
+          <p class="v5-note">النجاح هنا = القدرة على التوقف، مش الوصول إلى يقين كامل.</p>
+        </div>
+      </div>
+      <div class="recovery-card" style="margin-top:16px">
+        <h3>مهم</h3>
+        <p>التطبيق لا يشخّص ولا يقرر لكِ علاج الوسواس. تم تصميم هذا القسم ليكون داعمًا لمبادئ CBT/ERP: التعرض للمواقف أو الأفكار المسببة للقلق مع تقليل/منع الاستجابة القهرية، وخصوصًا تجنب تحويل التطبيق إلى أداة طمأنة متكررة. إرشادات NICE تعتبر CBT الذي يتضمن ERP من العلاجات الفعالة للوسواس القهري. citeturn0search2turn0search1</p>
+        <p>لو الأعراض مؤثرة على حياتك بشكل واضح، الأفضل يكون عندك مختص نفسي لديه خبرة فعلية في OCD وERP؛ التطبيق هنا للتدريب والمتابعة، وليس بديلًا عن العلاج.</p>
+      </div>
+    `;
+    const after = document.querySelector('#thought-speech');
+    if(after) after.parentNode.insertBefore(rec, after.nextSibling);
+    else document.body.appendChild(rec);
+
+    $('#urgeBtn').onclick=()=>{
+      const msg='سجلتي اختيارًا: “ألاحظ الـurge، ولا أحتاج أن أحسم الفكرة الآن. أترك مساحة لعدم اليقين وأعود لحياتي.”';
+      $('#urgeOut').hidden=false; $('#urgeOut').textContent=msg;
+      SalmaRecovery.saveRecovery({type:'urge-choice'});
+    };
+    $('#factBtn').onclick=()=>{
+      const f=$('#fact').value.trim(), st=$('#story').value.trim();
+      $('#factOut').hidden=false;
+      $('#factOut').textContent = f
+        ? `الحدث: ${f}${st?` | القصة التي أضافها العقل: ${st}`:''}. دلوقتي مش مطلوب منك حل القصة؛ اختاري خطوة في حياتك.`
+        : 'اكتبي الحدث كما هو، بجملة بسيطة، بدون تحقيق أو تحليل.';
+      SalmaRecovery.saveRecovery({type:'fact-story',fact:f,story:st});
+    };
+    document.querySelectorAll('[data-life]').forEach(b=>b.onclick=()=>{
+      const labels={talk:'اتكلمي مع شخص بدل متابعة الفكرة.',work:'اعملي أول خطوة من المهمة.',move:'قومي وتحركي أو اخرجي قليلًا.',fun:'اعملي حاجة ممتعة بدون ما تستني إن القلق يختفي.',rest:'خدي راحة بدون تحويلها لجلسة checking.',create:'اعملي شيئًا إبداعيًا لمدة قصيرة.'};
+      $('#lifeOut').textContent=labels[b.dataset.life];
+      SalmaRecovery.saveRecovery({type:'life-first',choice:b.dataset.life});
+    });
+  }
+
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',mount); else mount();
+})();
+</script>
+
+
+<script>
+/* ===== v6 interaction layer ===== */
+(function(){
+  const $=s=>document.querySelector(s);
+  const save=(k,v)=>localStorage.setItem('speakflow_v6_'+k,JSON.stringify(v));
+  const defense={
+    interrupt:'“ثانية واحدة، خليني أكمل النقطة دي وبعدها أسمعك.”',
+    blame:'“خلينا نفصل بين اللي حصل وبين تفسيره. اللي أقدر أقوله عن الجزء الخاص بي هو ____.”',
+    disagree:'“أنا مختلفة مع النقطة دي. وجهة نظري هي ____، والسبب الأساسي هو ____.”',
+    pressure:'“محتاجة أفكر قبل ما أوافق. هرد عليك بعد ما أراجع الموضوع.”',
+    misrepresent:'“ده مش اللي قصدته. خليني أوضح قصدي في جملة واحدة: ____.”',
+    boundary:'“أنا مش موافقة على الأسلوب/التصرف ده. نقدر نكمل الكلام باحترام.”'
+  };
+  document.querySelectorAll('[data-defense]').forEach(b=>b.onclick=()=>{
+    $('#defenseOut').textContent=defense[b.dataset.defense];
+    save('lastDefense',b.dataset.defense);
+  });
+  $('#perceptionBtn')?.addEventListener('click',()=>{
+    $('#perceptionOut').hidden=false;
+    $('#perceptionOut').innerHTML='<b>Reset:</b> “أنا لا أعرف ما الذي يفكر فيه الآخرون. أعرف فقط ما فعلته وما أستطيع إصلاحه. إذا لم يوجد شيء أفعله الآن، لن أستخدم التفكير كبديل للفعل.”';
+    save('perceptionReset',new Date().toISOString());
+  });
+  $('#otAction')?.addEventListener('click',()=>{
+    const e=$('#otEvent').value.trim();
+    $('#otOut').textContent=e
+      ? 'لو فيه فعل حقيقي، حدديه في خطوة واحدة فقط. مثال: أوضح نقطة، أعتذر، أرسل رسالة، أو أطلب توضيحًا. بعد الخطوة: انتهى الدور.'
+      : 'اكتبي الحدث في جملة واحدة، ثم حددي هل هناك Action حقيقي أم لا.';
+  });
+  $('#otRelease')?.addEventListener('click',()=>{
+    $('#otOut').textContent='لا يوجد Action الآن. مش مطلوب توصلي لليقين أو تراجعي الموقف مرة أخرى. لاحظي الـurge، واتركي الفكرة، وارجعي لشيء في حياتك.';
+    save('release',new Date().toISOString());
+  });
+  const brave={
+    opinion:'اليوم: قولي رأيًا حقيقيًا بجملة واحدة، من غير اعتذار عن وجود رأي.',
+    no:'اليوم: ارفضي طلبًا غير مناسب لكِ بجملة قصيرة، من غير قصة طويلة لتبرير الرفض.',
+    ask:'اليوم: اطلبي شيئًا تحتاجينه بوضوح، ثم اتركي للشخص حرية الرد.',
+    silence:'اليوم: بعد إجابتك، اتركي ثانيتين من الصمت بدل ملء الفراغ بالكلام.'
+  };
+  document.querySelectorAll('[data-brave]').forEach(b=>b.onclick=()=>{
+    $('#braveOut').textContent=brave[b.dataset.brave];
+    save('brave',b.dataset.brave);
+  });
+})();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+(function(){
+const SB_URL='https://iafwpbqivypgzfxykbme.supabase.co',SB_KEY='sb_publishable_5ypFfzZpVI4Ef-TsI4QNiA_01tQpl0w';
+if(!window.supabase||!window.supabase.createClient)return;
+const sb=window.supabase.createClient(SB_URL,SB_KEY);
+const SYNC_AT='speakflow_synced_at',TABLE='speakflow_progress';
+const origSet=Storage.prototype.setItem;
+let user=null,timer=null,applying=false,mode='in';
+const L=()=>(typeof lang!=='undefined'&&lang==='ar')?'ar':'en';
+const TX={en:{t:'Sign in to save your progress',s:'One account keeps your days in sync on every device.',email:'Email',pw:'Password',in:'Sign in',up:'Create account',toUp:'Create account',toIn:'I have an account',skip:'Continue without saving',bad:'Wrong email or password.',check:'Check your email to confirm, then sign in.',short:'Password must be at least 6 characters.'},
+ ar:{t:'سجّلي دخولك عشان تقدمك يتحفظ',s:'حساب واحد بيحافظ على أيامك على كل جهاز.',email:'الإيميل',pw:'كلمة السر',in:'دخول',up:'إنشاء حساب',toUp:'إنشاء حساب',toIn:'عندي حساب',skip:'كمّلي من غير حفظ',bad:'الإيميل أو كلمة السر غلط.',check:'افتحي الإيميل وأكدي الحساب، وبعدها سجّلي دخول.',short:'كلمة السر لازم تكون 6 حروف على الأقل.'}};
+const wrap=document.createElement('div');wrap.className='auth-wrap';wrap.hidden=true;
+wrap.innerHTML='<form class="auth-card" id="authForm" novalidate><h2 id="aT"></h2><p id="aS"></p><input type="email" id="aEmail" autocomplete="email" dir="ltr"><input type="password" id="aPw" autocomplete="current-password" dir="ltr"><button class="btn" id="aGo" type="submit"></button><div class="auth-msg" id="aMsg" role="alert"></div><div class="auth-alt"><button type="button" id="aSwitch"></button><button type="button" id="aSkip"></button></div></form>';
+document.body.appendChild(wrap);
+const $=id=>document.getElementById(id);
+function paint(){const T=TX[L()];$('aT').textContent=T.t;$('aS').textContent=T.s;$('aEmail').placeholder=T.email;$('aPw').placeholder=T.pw;$('aGo').textContent=mode==='in'?T.in:T.up;$('aSwitch').textContent=mode==='in'?T.toUp:T.toIn;$('aSkip').textContent=T.skip;wrap.dir=L()==='ar'?'rtl':'ltr'}
+function msg(t,ok){const m=$('aMsg');m.textContent=t||'';m.className='auth-msg'+(ok?' ok':'')}
+$('aSwitch').onclick=()=>{mode=mode==='in'?'up':'in';msg('');paint()};
+$('aSkip').onclick=()=>{wrap.hidden=true};
+$('authForm').onsubmit=async e=>{e.preventDefault();const T=TX[L()],em=$('aEmail').value.trim(),pw=$('aPw').value;msg('');
+ if(pw.length<6){msg(T.short);return}
+ if(mode==='in'){const {error}=await sb.auth.signInWithPassword({email:em,password:pw});if(error)msg(T.bad);}
+ else{const {data,error}=await sb.auth.signUp({email:em,password:pw});if(error)msg(error.message);else if(!data.session)msg(T.check,true);}
+};
+function bundle(){const o={};Object.keys(localStorage).forEach(k=>{if(k.startsWith('speakflow')&&k!==SYNC_AT)o[k]=localStorage.getItem(k)});return o}
+async function push(){if(!user)return;const now=new Date().toISOString();const {error}=await sb.from(TABLE).upsert({user_id:user.id,data:bundle(),updated_at:now});if(!error)origSet.call(localStorage,SYNC_AT,now)}
+function schedule(){clearTimeout(timer);timer=setTimeout(push,1500)}
+Storage.prototype.setItem=function(k,v){origSet.call(this,k,v);if(this===localStorage&&typeof k==='string'&&k.startsWith('speakflow')&&k!==SYNC_AT&&!applying)schedule()};
+async function pull(){
+ const {data,error}=await sb.from(TABLE).select('data,updated_at').eq('user_id',user.id).maybeSingle();
+ if(error)return;
+ const local=localStorage.getItem(SYNC_AT);
+ if(data&&(!local||Date.parse(data.updated_at)>Date.parse(local))){
+  applying=true;Object.entries(data.data||{}).forEach(([k,v])=>origSet.call(localStorage,k,v));origSet.call(localStorage,SYNC_AT,data.updated_at);applying=false;location.reload();return}
+ await push();
+}
+sb.auth.onAuthStateChange((ev,session)=>{user=session?session.user:null;if(user){wrap.hidden=true;setTimeout(pull,0)}});
+sb.auth.getSession().then(({data})=>{if(!data.session){paint();wrap.hidden=false}});
+const prev=window.applyLanguage;if(typeof prev==='function'){window.applyLanguage=function(){prev.apply(this,arguments);try{paint()}catch(e){}}}
+window.addEventListener('pagehide',()=>{if(user&&timer){clearTimeout(timer);push()}});
+})();
+</script>
+</body>
+<!-- SpeakFlow Salma Recovery v5: self-expression + OCD-recovery-support modules -->
+</html>
+<!-- SpeakFlow Salma Recovery v6: self-worth, self-defense, overthinking -->
